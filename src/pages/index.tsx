@@ -48,6 +48,22 @@ const activities = [
       </p>,
     linkTo: "/security",
   },
+  {
+    title: "CreateCPU",
+    coverImage: {
+      src: "https://source.unsplash.com/_LIZ36OHGKk/800x300",
+      alt: "CPU のイメージ",
+    },
+    description:
+      // prettier-ignore
+      <p>
+        皆さんの持つパソコンやスマートフォンは、私たちが手で計算するよりもずっと高速に計算を行うことができます。
+        これは、私たちの脳に相当する CPU と呼ばれる部品が、計算を高速に行っているからです。
+        高速な CPU を製造するには高度な技術が必要ですが、CPU の理論的背景自体は、実はとてもシンプルです。
+        足し算を行う論理回路を作りながら、CPU の仕組みを学んでいきましょう。
+      </p>,
+    linkTo: "/create-cpu",
+  },
 ];
 
 export default function Home(): JSX.Element {
