@@ -37,6 +37,18 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      /** @type {import("@docusaurus/plugin-content-docs").Options} */
+      ({
+        id: "create-cpu",
+        path: "create-cpu",
+        routeBasePath: "create-cpu",
+        sidebarPath: require.resolve("./create-cpu/sidebars.js"),
+      }),
+    ],
+  ],
   themeConfig:
     /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
     ({
