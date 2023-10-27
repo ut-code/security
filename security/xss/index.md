@@ -1,3 +1,5 @@
+import { Sandpack } from "@codesandbox/sandpack-react";
+
 # ほかのユーザーを妨害しよう
 
 Web サービスに対する攻撃は、データベースの中を覗こうとするものに限りません。
@@ -17,3 +19,39 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 この HTML や JavaScript をブラウザが解釈して実行することにより、ウェブサイトは動作しているのです。
 
 ![](./html-response.drawio.svg)
+
+## HTML と JavaScript の基礎文法
+
+ウェブサイトで使われる言語である HTML と JavaScript は、それぞれ次のような異なる役割を持ち、互いに協調して動作します。
+それぞれの言語の書き方を見ていきましょう。
+
+- HTML: ウェブサイトの構造を表現する
+- JavaScript: HTML から参照され、ウェブサイトに動きを加える
+
+### HTML
+
+次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
+
+<Sandpack
+  files={{ "/index.html": "Hello <strong>World</strong>" }}
+  theme="light"
+  template="static"
+/>
+
+HTML における `<` から始まり `>` で終わる部分は、**タグ** と呼ばれます。
+タグはそれぞれに固有の意味を持ち、 `<tag>内容</tag>` のように、タグ名の先頭にスラッシュを付けるか否かの区別により開始タグと終了タグに分かれ、内部にテキストや別のタグを挟み込むことができます。
+
+上の例では、テキストの一部分を強調するための `<strong>` タグを使用しているため、`World` の部分が太字で表示されました。
+
+### JavaScript
+
+JavaScript は、`<script>` タグの中に記述します。
+
+```html title="HTML"
+Hello
+<script>
+  document.write("World");
+</script>
+```
+
+この例では、`document.write("World");` の部分が JavaScript になっています。
