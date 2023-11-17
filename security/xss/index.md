@@ -1,4 +1,4 @@
-import { Sandpack } from "@codesandbox/sandpack-react";
+import InteractiveEditor from "@site/components/InteractiveEditor";
 
 # ほかのユーザーを妨害しよう
 
@@ -13,10 +13,10 @@ iPhone を使っている方は Safari を、Android を使っている方は Go
 Safari や Google Chrome のように、ウェブサイトを見るためのソフトウェアを**ブラウザ**と呼びます。
 どのブラウザを使っても同じようにウェブサイトが動作するのは、このブラウザと呼ばれるソフトウェアの動作が、国際機関によって標準化されているためです。
 
-これまでに見てきたように、あなたがウェブサイトを見ようとしたとき、ブラウザはあなたの意思に応えて Web サーバーにウェブサイトのデータを送るよう要求します。
+これまで見てきたように、あなたがウェブサイトを見ようとしたとき、ブラウザはあなたの意思に応えて Web サーバーにウェブサイトのデータを送るよう要求します。
 
 このとき、Web サーバーがブラウザに対して送り返すデータは、**HTML** や **JavaScript** といったプログラミング言語で記述されています。
-この HTML や JavaScript をブラウザが解釈して実行することにより、ウェブサイトは動作しているのです。
+ブラウザは、この HTML や JavaScript を解釈することにより、ウェブサイトを表示しています。
 
 ![](./html-response.drawio.svg)
 
@@ -28,30 +28,61 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 - HTML: ウェブサイトの構造を表現する
 - JavaScript: HTML から参照され、ウェブサイトに動きを加える
 
+![Web 開発で用いられる言語](./web-development-languages.drawio.svg)
+
 ### HTML
 
 次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
 
-<Sandpack
-  files={{ "/index.html": "Hello <strong>World</strong>" }}
-  theme="light"
-  template="static"
-/>
+<p>
+  <InteractiveEditor
+    html="Hello <strong>World</strong>"
+  />
+</p>
 
 HTML における `<` から始まり `>` で終わる部分は、**タグ** と呼ばれます。
-タグはそれぞれに固有の意味を持ち、 `<tag>内容</tag>` のように、タグ名の先頭にスラッシュを付けるか否かの区別により開始タグと終了タグに分かれ、内部にテキストや別のタグを挟み込むことができます。
+タグはそれぞれ固有の意味を持ち、 `<tag>内容</tag>` のように、タグ名の先頭にスラッシュを付けるか否かの区別により開始タグと終了タグに分かれ、内部にテキストや別のタグを挟み込むことができます。
 
-上の例では、テキストの一部分を強調するための `<strong>` タグを使用しているため、`World` の部分が太字で表示されました。
+上の例では、テキストの一部分を強調するための `<strong>` タグを使用しているため、`World` の部分が太字で表示されています。
+
+![開始タグと終了タグ](./start-end-tag.png)
+
+HTML では、他にも多くのタグが定義されており、ウェブサイトの豊かな表現力を支えています。
+
+<p>
+  <InteractiveEditor
+    html={`
+<input>
+<button>送信</button>
+<h3>買い物リスト</h3>
+<ul>
+  <li>キャベツ</li>
+  <li>にんじん</li>
+</ul>
+    `.trim()}
+  />
+</p>
 
 ### JavaScript
 
-JavaScript は、`<script>` タグの中に記述します。
+Web サイトに動きを与えるためのプログラミング言語である JavaScript は、通常 HTML の中に埋め込まれる形で記述されます。
+次の例では、JavaScript を用いて「Hello World」の「World」の部分を出力しています。
 
-```html title="HTML"
+<p>
+  <InteractiveEditor
+    html={`
 Hello
 <script>
-  document.write("World");
+  document.write("Hello");
 </script>
-```
+    `.trim()}
+  />
+</p>
 
-この例では、`document.write("World");` の部分が JavaScript になっています。
+HTML の中で JavaScript を使用するためには、`script` タグを用います。
+この例では、`document.write("World");` の部分が JavaScript になっており、このプログラムが実行されることで、`World` が出力されます。
+
+### JavaScript の危険性
+
+パソコンやスマートフォンが高性能化するにつれ、ウェブブラウザ上でより高度なアプリケーションが動かせるようになりました。
+JavaScript は、そのようなアプリケーションの基盤となるプログラミング言語です。
