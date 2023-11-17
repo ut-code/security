@@ -49,6 +49,16 @@ const config = {
         sidebarPath: require.resolve("./create-cpu/sidebars.js"),
       }),
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      /** @type {import("@docusaurus/plugin-content-docs").Options} */
+      ({
+        id: "crypto",
+        path: "crypto",
+        routeBasePath: "crypto",
+        sidebarPath: require.resolve("./crypto/sidebars.js"),
+      }),
+    ],
   ],
   themeConfig:
     /** @type {import("@docusaurus/preset-classic").ThemeConfig} */

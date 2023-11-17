@@ -1,6 +1,5 @@
 ---
-title: 暗号
+sidebar_position: 1
 ---
-[RSA暗号](https://kf74-rsa.pages.dev/)
 
 # 暗号

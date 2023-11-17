@@ -64,6 +64,19 @@ const activities = [
       </p>,
     linkTo: "/create-cpu",
   },
+  {
+    title: "暗号技術",
+    coverImage: {
+      src: "https://source.unsplash.com/_LIZ36OHGKk/800x300",
+      alt: "CPU のイメージ",
+    },
+    description:
+      // prettier-ignore
+      <p>
+        暗号技術について学びます。
+      </p>,
+    linkTo: "/crypto",
+  },
 ];
 
 export default function Home(): JSX.Element {
