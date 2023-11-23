@@ -19,6 +19,7 @@ const activities = [
     linkTo: "https://festival.utcode.net/",
     targetAge: "どなたでも",
     isNew: false,
+    requiredTime: "10分～",
   },
   {
     title: "Code vs Code",
@@ -36,6 +37,7 @@ const activities = [
     linkTo: "https://code-vs-code.utcode.net/",
     targetAge: "どなたでも",
     isNew: false,
+    requiredTime: "30分～",
   },
   {
     title: "タイピングゲーム",
@@ -52,6 +54,7 @@ const activities = [
     linkTo: "https://typing.utcode.net/",
     targetAge: "どなたでも",
     isNew: false,
+    requiredTime: "1分～",
   },
   {
     title: "ハッカーになろう",
@@ -69,6 +72,7 @@ const activities = [
     linkTo: "/security",
     targetAge: "初心者におすすめ",
     isNew: true,
+    requiredTime: "15分～",
   },
   {
     title: "CreateCPU",
@@ -87,6 +91,7 @@ const activities = [
     linkTo: "/create-cpu",
     targetAge: "高校生以上におすすめ",
     isNew: true,
+    requiredTime: "5分～",
   },
   {
     title: "暗号技術について学ぼう！",
@@ -104,6 +109,7 @@ const activities = [
     linkTo: "/crypto",
     isNew: true,
     targetAge: "一部は高校生以上におすすめ",
+    requiredTime: "15分～",
   },
 ];
 
@@ -141,6 +147,7 @@ export default function Home(): JSX.Element {
                   <h3>{activity.title}</h3>
                   {activity.isNew && <h3 className="badge badge--success">NEW</h3>}
                   <h3 className="badge badge--primary">{activity.targetAge}</h3>
+                  <h3 className="badge badge--info">{activity.requiredTime}</h3>
                   {activity.description}
                 </div>
                 <div className="card__footer">
