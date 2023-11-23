@@ -114,6 +114,7 @@ SELECT * FROM "Mail" WHERE "from" = 'Aさん' AND "to" = 'あなた';
 
 SELECT 文は、次のような構文を持ちます。
 
+
 ```sql
 SELECT 取得する属性名 FROM データの種類 WHERE 条件
 ```
@@ -137,3 +138,20 @@ SELECT 取得する属性名 FROM データの種類 WHERE 条件
 - `content`: メールの本文
 
 の 6 つであることが分かっています。
+
+<details>
+   <summary>課題のヒント</summary>
+   <div>
+      入力欄に `Aさん' OR "from"='Aさん`と入力すると、
+      ```sql
+      SELECT * FROM "Mail" WHERE "from" = '⭐️' AND "to" = 'あなた';
+      ```
+      の⭐️に、入力内容が代入されるので、
+      データベースに送信されるSQL文は
+      ```sql
+      SELECT * FROM "Mail" WHERE "from" = 'Aさん' OR "from"='Aさん' AND "to" = 'あなた';
+      ```
+      となり、Aさんが送信したメールをすべて抽出することができます。
+      ⭐️が`Aさん' OR "from"='Aさん`に置き換わることで、全体としての意味が大きく変化していることに注目してください。
+   </div>
+</details>
