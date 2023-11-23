@@ -65,15 +65,17 @@ const activities = [
     linkTo: "/create-cpu",
   },
   {
-    title: "暗号技術",
+    title: "暗号技術について学ぼう！",
     coverImage: {
-      src: "https://source.unsplash.com/_LIZ36OHGKk/800x300",
-      alt: "CPU のイメージ",
+      src: "https://source.unsplash.com/iar-afB0QQw/800x300",
+      alt: "暗号のイメージ",
     },
     description:
       // prettier-ignore
       <p>
-        暗号技術について学びます。
+        暗号技術は、現代社会において欠かせないものとなっています。
+        ここでは、エニグマという第二次世界大戦で実際に使われていた暗号のしくみと、
+        現代の暗号技術の基礎である RSA 暗号を学びます。
       </p>,
     linkTo: "/crypto",
   },
