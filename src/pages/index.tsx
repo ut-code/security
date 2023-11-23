@@ -38,6 +38,22 @@ const activities = [
     isNew: false,
   },
   {
+    title: "タイピングゲーム",
+    coverImage: {
+      src: "https://source.unsplash.com/kUqqaRjJuw0/800x300",
+      alt: "タイピングゲームをするイメージ",
+    },
+    description:
+    <p>
+      タイピングゲームで、一位を目指そう！
+      他の人と競い合いながら、タイピングの練習をすることができます。
+      他のタイピングゲームにはない独自の機能もあるかも……？
+    </p>,
+    linkTo: "https://typing.utcode.net/",
+    targetAge: "どなたでも",
+    isNew: false,
+  },
+  {
     title: "ハッカーになろう",
     coverImage: {
       src: "https://source.unsplash.com/FnA5pAzqhMM/800x300",
