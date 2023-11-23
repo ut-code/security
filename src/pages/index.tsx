@@ -18,6 +18,7 @@ const activities = [
       </p>,
     linkTo: "https://festival.utcode.net/",
     targetAge: "どなたでも",
+    isNew: false,
   },
   {
     title: "Code vs Code",
@@ -34,6 +35,7 @@ const activities = [
       </p>,
     linkTo: "https://code-vs-code.utcode.net/",
     targetAge: "どなたでも",
+    isNew: false,
   },
   {
     title: "ハッカーになろう",
@@ -50,6 +52,7 @@ const activities = [
       </p>,
     linkTo: "/security",
     targetAge: "初心者におすすめ",
+    isNew: true,
   },
   {
     title: "CreateCPU",
@@ -67,6 +70,7 @@ const activities = [
       </p>,
     linkTo: "/create-cpu",
     targetAge: "高校生以上におすすめ",
+    isNew: true,
   },
   {
     title: "暗号技術について学ぼう！",
@@ -117,6 +121,7 @@ export default function Home(): JSX.Element {
                 </div>
                 <div className="card__body">
                   <h3>{activity.title}</h3>
+                  {activity.isNew && <h3 className="badge badge--info">NEW</h3>}
                   <h3 className="badge badge--primary">{activity.targetAge}</h3>
                   {activity.description}
                 </div>
