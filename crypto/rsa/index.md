@@ -130,6 +130,7 @@ $$
 ## 実際にやってみよう
 それでは、実際にRSA暗号を用いて文字列を暗号化し、復号してみましょう。
 [RSA暗号](https://kf74-rsa.pages.dev/)にアクセスしてください。次のような画面が表示されます。
+<p><a href="https://kf74-rsa.pages.dev/" target="_blank" rel="noreferrer" className="button button--primary button--block">RSA暗号を体験できるサイトを開く</a></p>
 
 ![](./rsa1.png)
 
