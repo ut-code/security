@@ -68,6 +68,21 @@ const activities = [
     linkTo: "/create-cpu",
     targetAge: "高校生以上におすすめ",
   },
+  {
+    title: "暗号技術について学ぼう！",
+    coverImage: {
+      src: "https://source.unsplash.com/iar-afB0QQw/800x300",
+      alt: "暗号のイメージ",
+    },
+    description:
+      // prettier-ignore
+      <p>
+        暗号技術は、現代社会において欠かせないものとなっています。
+        ここでは、エニグマという第二次世界大戦で実際に使われていた暗号のしくみと、
+        現代の暗号技術の基礎である RSA 暗号を学びます。
+      </p>,
+    linkTo: "/crypto",
+  },
 ];
 
 export default function Home(): JSX.Element {
