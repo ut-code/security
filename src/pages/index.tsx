@@ -17,6 +17,7 @@ const activities = [
         でも最適化するとなると大人でも大変……。ぜひ挑戦していってください！
       </p>,
     linkTo: "https://festival.utcode.net/",
+    targetAge: "どなたでも",
   },
   {
     title: "Code vs Code",
@@ -32,6 +33,7 @@ const activities = [
         最強 AI の座を手にするのは一体誰だ！？
       </p>,
     linkTo: "https://code-vs-code.utcode.net/",
+    targetAge: "どなたでも",
   },
   {
     title: "ハッカーになろう",
@@ -47,6 +49,7 @@ const activities = [
         インターネット上の詐欺から身を守る方法も学べます。
       </p>,
     linkTo: "/security",
+    targetAge: "初心者におすすめ",
   },
   {
     title: "CreateCPU",
@@ -63,6 +66,7 @@ const activities = [
         足し算を行う論理回路を作りながら、CPU の仕組みを学んでいきましょう。
       </p>,
     linkTo: "/create-cpu",
+    targetAge: "高校生以上におすすめ",
   },
 ];
 
@@ -98,6 +102,7 @@ export default function Home(): JSX.Element {
                 </div>
                 <div className="card__body">
                   <h3>{activity.title}</h3>
+                  <h3 className="badge badge--primary">{activity.targetAge}</h3>
                   {activity.description}
                 </div>
                 <div className="card__footer">
