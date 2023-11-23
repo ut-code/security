@@ -6,9 +6,13 @@ sidebar_position: 3
 
 ![](./component.png)
 
-そしてこの画面でコンポーネントの名前をHalfAdderとして、Create!ボタンを押しましょう。
+この画面で CREATE NEW... ボタンを押しましょう。
 
 ![](./component_create.png)
+
+名前に HalfAdder と入力して OK を押してください。
+
+![](./component_name.png)
 
 これで、作った半加算器が他のコンポーネントで使えるようになります。
 
