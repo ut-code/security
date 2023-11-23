@@ -82,6 +82,7 @@ const activities = [
         現代の暗号技術の基礎である RSA 暗号を学びます。
       </p>,
     linkTo: "/crypto",
+    targetAge: "一部は高校生以上におすすめ",
   },
 ];
 
