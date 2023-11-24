@@ -4,6 +4,7 @@ sidebar_position: 3
 # エニグマ
 ## エニグマの使い方
 まず、[エニグマ](https://kf74-code.pages.dev/)を開いてください。
+<p><a href="https://kf74-code.pages.dev/" target="_blank" rel="noreferrer" className="button button--primary button--block">エニグマを体験できるサイトを開く</a></p>
 
 ![](./key.png)
 これは、エニグマの鍵を設定する部分です。エニグマは、スクランブラーの初期状態と順番が鍵となっています。この画像では、3つのスクランブラーの初期状態はすべてAで、その順番は1, 2, 3となっています。鍵を変更したい場合は、鍵を設定して、Set key and newlineボタンを押します。
