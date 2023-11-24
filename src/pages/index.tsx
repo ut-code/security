@@ -102,8 +102,8 @@ const activities = [
         現代の暗号技術の基礎である RSA 暗号を学びます。
       </p>,
     linkTo: "/crypto",
-    targetAge: "高校生以上におすすめ",
     isNew: true,
+    targetAge: "一部は高校生以上におすすめ",
   },
 ];
 
@@ -139,7 +139,7 @@ export default function Home(): JSX.Element {
                 </div>
                 <div className="card__body">
                   <h3>{activity.title}</h3>
-                  {activity.isNew && <h3 className="badge badge--info">NEW</h3>}
+                  {activity.isNew && <h3 className="badge badge--success">NEW</h3>}
                   <h3 className="badge badge--primary">{activity.targetAge}</h3>
                   {activity.description}
                 </div>
