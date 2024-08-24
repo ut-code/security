@@ -109,7 +109,7 @@ SQL では、通常「かつ」は「または」より優先されます。
 </p>
 
 <form action="/practice-sql">
-  <button>SQL インジェクションの脆弱性を持つメールサービスを開く</button>
+  <button className="button button--primary button--block">SQL インジェクションの脆弱性を持つメールサービスを開く</button>
 </form>
 
 SQL によりデータを取得するには、SELECT 文を用います。
