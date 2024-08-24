@@ -2,16 +2,19 @@ const fs = require("fs");
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
+const path = require("path");
 
 app.use(express.urlencoded({ extended: true }));
 
 const prisma = require("@prisma/client");
 const client = new prisma.PrismaClient();
 
+const buildDirPath = path.join(__dirname, "../build");
+app.use(express.static(buildDirPath));
 app.use("/css", express.static("css"));
 app.use("/img", express.static("img"));
 
-app.get("/", async (request, response) => {
+app.get("/practice-sql", async (request, response) => {
   let mails = [];
   const FROM = request.query.from;
   try {

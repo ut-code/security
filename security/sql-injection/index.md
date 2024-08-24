@@ -97,17 +97,6 @@ SQL では、通常「かつ」は「または」より優先されます。
 あなたはG国という国で有名なハッカーです。ある日、G国付近にあり、隣国のI国の領土である銀杏島にて、レアアース泥が発見されました。G国の政府は銀杏島のレアアース獲得を目指しています。あなたは、G国政府に、I国内のメールのやり取りから、島の警備情報を盗み見ることを命じられました。
 下のリンクをクリックして、SQL インジェクションの脆弱性を持つメールサービスからデータを盗み出してみましょう。
 
-<p>
-  <a
-    href="https://try-sql-injection.onrender.com/"
-    target="_blank"
-    rel="noreferrer"
-    className="button button--primary button--block"
-  >
-    SQL インジェクションの脆弱性を持つメールサービスを開く
-  </a>
-</p>
-
 <form action="/practice-sql">
   <button className="button button--primary button--block">SQL インジェクションの脆弱性を持つメールサービスを開く</button>
 </form>
