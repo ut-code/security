@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const express = require("express");
 const ejs = require("ejs");
 const app = express();
@@ -13,8 +13,12 @@ const buildDirPath = path.join(__dirname, "../build");
 app.use(express.static(buildDirPath));
 app.use("/css", express.static("css"));
 app.use("/img", express.static("img"));
+app.get("/practice-sql", async(req, res) => {
+  const html = fs.readFile("./index.html", "utf-8");
+  res.send(html);
+})
 
-app.get("/practice-sql", async (request, response) => {
+app.get("/practice-sql/api", async (request, response) => {
   let mails = [];
   const FROM = request.query.from;
   try {
