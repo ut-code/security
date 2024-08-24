@@ -97,7 +97,20 @@ SQL では、通常「かつ」は「または」より優先されます。
 あなたはG国という国で有名なハッカーです。ある日、G国付近にあり、隣国のI国の領土である銀杏島にて、レアアース泥が発見されました。G国の政府は銀杏島のレアアース獲得を目指しています。あなたは、G国政府に、I国内のメールのやり取りから、島の警備情報を盗み見ることを命じられました。
 下のリンクをクリックして、SQL インジェクションの脆弱性を持つメールサービスからデータを盗み出してみましょう。
 
-<p><a href="https://try-sql-injection.onrender.com/" target="_blank" rel="noreferrer" className="button button--primary button--block">SQL インジェクションの脆弱性を持つメールサービスを開く</a></p>
+<p>
+  <a
+    href="https://try-sql-injection.onrender.com/"
+    target="_blank"
+    rel="noreferrer"
+    className="button button--primary button--block"
+  >
+    SQL インジェクションの脆弱性を持つメールサービスを開く
+  </a>
+</p>
+
+<form action="/practice-sql">
+  <button>SQL インジェクションの脆弱性を持つメールサービスを開く</button>
+</form>
 
 SQL によりデータを取得するには、SELECT 文を用います。
 事前情報により、このメールサービスでは、SQL の雛型として、次のような SELECT 文を用いていることが分かっています。
@@ -107,13 +120,14 @@ SELECT * FROM "Mail" WHERE "from" = '⭐️' AND "to" = 'あなた';
 ```
 
 メールサイト上部にある入力欄に入力された内容が上の⭐️に代入されます。例えば、入力欄に Aさん と入力すると
+
 ```sql
 SELECT * FROM "Mail" WHERE "from" = 'Aさん' AND "to" = 'あなた';
 ```
+
 というSQL文になります。これによって、『送信者』が「Aさん」かつ『宛先』が「あなた」のメールを検索できます。
 
 SELECT 文は、次のような構文を持ちます。
-
 
 ```sql
 SELECT 取得する属性名 FROM データの種類 WHERE 条件
@@ -140,18 +154,14 @@ SELECT 取得する属性名 FROM データの種類 WHERE 条件
 の 6 つであることが分かっています。
 
 <details>
-   <summary>課題のヒント</summary>
-   <div>
-      入力欄に `Aさん' OR "from"='Aさん`と入力すると、
-      ```sql
-      SELECT * FROM "Mail" WHERE "from" = '⭐️' AND "to" = 'あなた';
-      ```
-      の⭐️に、入力内容が代入されるので、
-      データベースに送信されるSQL文は
-      ```sql
-      SELECT * FROM "Mail" WHERE "from" = 'Aさん' OR "from"='Aさん' AND "to" = 'あなた';
-      ```
-      となり、Aさんが送信したメールをすべて抽出することができます。
-      ⭐️が`Aさん' OR "from"='Aさん`に置き換わることで、全体としての意味が大きく変化していることに注目してください。
-   </div>
+  <summary>課題のヒント</summary>
+  <div>
+    入力欄に `Aさん' OR "from"='Aさん`と入力すると、 ```sql SELECT * FROM "Mail"
+    WHERE "from" = '⭐️' AND "to" = 'あなた'; ```
+    の⭐️に、入力内容が代入されるので、 データベースに送信されるSQL文は ```sql
+    SELECT * FROM "Mail" WHERE "from" = 'Aさん' OR "from"='Aさん' AND "to" =
+    'あなた'; ``` となり、Aさんが送信したメールをすべて抽出することができます。
+    ⭐️が`Aさん' OR
+    "from"='Aさん`に置き換わることで、全体としての意味が大きく変化していることに注目してください。
+  </div>
 </details>

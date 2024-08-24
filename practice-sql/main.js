@@ -17,7 +17,7 @@ app.get("/", async (request, response) => {
   try {
     FROM
       ? (mails = await client.$queryRawUnsafe(
-          `SELECT * FROM "Mail" WHERE "from" = '${FROM}' AND "to" = '駒場 優' ORDER BY "id" DESC;`
+          `SELECT * FROM "Mail" WHERE "from" = '${FROM}' AND "to" = '駒場 優' ORDER BY "id" DESC;`,
         ))
       : (mails = await client.$queryRawUnsafe(`
         SELECT * FROM "Mail" WHERE "to" = '駒場 優' ORDER BY "id" DESC;
@@ -30,10 +30,10 @@ app.get("/", async (request, response) => {
     }
     const template = fs.readFileSync("template.ejs", "utf-8");
     const html = ejs.render(template, {
-    queryFrom: request.query.from,
-    mails: [],
-    isError: true,
-  });
+      queryFrom: request.query.from,
+      mails: [],
+      isError: true,
+    });
     return response.send(html);
   }
 
