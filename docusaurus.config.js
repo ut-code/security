@@ -13,10 +13,10 @@ import rehypeKatex from "rehype-katex";
 
 /** @type {import("@docusaurus/types").Config} */
 const config = {
-  title: "あなたのためのプログラミング",
-  tagline: "ut.code(); 第74回駒場祭企画",
-  favicon: "img/favicon.ico",
-  url: "https://kf74.utcode.net",
+  title: "ハッカーになろう",
+  tagline: "ut.code(); 駒場祭/五月祭企画",
+  favicon: "/img/favicon.ico",
+  url: "https://todo.utcode.net", // TODO: change this
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
@@ -31,8 +31,8 @@ const config = {
       ({
         docs: {
           sidebarPath: "./security/sidebars.js",
-          path: "security",
-          routeBasePath: "security",
+          path: "./security",
+          routeBasePath: "/",
         },
         blog: false,
         theme: {
@@ -41,32 +41,6 @@ const config = {
       }),
     ],
   ],
-  /*
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-       @type {import("@docusaurus/plugin-content-docs").Options} 
-      ({
-        id: "create-cpu",
-        path: "create-cpu",
-        routeBasePath: "create-cpu",
-        sidebarPath: "./create-cpu/sidebars.js",
-      }),
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-       @type {import("@docusaurus/plugin-content-docs").Options} 
-      ({
-        id: "crypto",
-        path: "crypto",
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex],
-        routeBasePath: "crypto",
-        sidebarPath: "./crypto/sidebars.js",
-      }),
-    ],
-  ],
-  */
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
@@ -80,7 +54,7 @@ const config = {
     /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
     ({
       navbar: {
-        title: "あなたのためのプログラミング",
+        title: "ハッカーになろう by ut.code();",
         logo: {
           alt: "ut.code();",
           src: "img/logo.svg",
@@ -106,6 +80,14 @@ const config = {
               {
                 label: "Twitter",
                 href: "https://twitter.com/utokyo_code",
+              },
+              {
+                label: "Twitter",
+                href: "https://twitter.com/utokyo_code",
+              },
+              {
+                label: "GitHub",
+                href: "https://github.com/ut-code",
               },
             ],
           },
