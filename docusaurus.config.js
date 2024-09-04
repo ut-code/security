@@ -5,11 +5,11 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 // const { themes } = require("prism-react-renderer");
-import { themes } from 'prism-react-renderer';
+import { themes } from "prism-react-renderer";
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 /** @type {import("@docusaurus/types").Config} */
 const config = {
@@ -30,9 +30,9 @@ const config = {
       /** @type {import("@docusaurus/preset-classic").Options} */
       ({
         docs: {
-          sidebarPath: "./security/sidebars.js",
-          path: "security",
-          routeBasePath: "security",
+          sidebarPath: "./src/sidebars.js",
+          path: "src",
+          routeBasePath: "/",
         },
         blog: false,
         theme: {
@@ -41,37 +41,13 @@ const config = {
       }),
     ],
   ],
-  plugins: [
-    [
-      "@docusaurus/plugin-content-docs",
-      /** @type {import("@docusaurus/plugin-content-docs").Options} */
-      ({
-        id: "create-cpu",
-        path: "create-cpu",
-        routeBasePath: "create-cpu",
-        sidebarPath: "./create-cpu/sidebars.js",
-      }),
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      /** @type {import("@docusaurus/plugin-content-docs").Options} */
-      ({
-        id: "crypto",
-        path: "crypto",
-        remarkPlugins: [remarkMath],
-        rehypePlugins: [rehypeKatex],
-        routeBasePath: "crypto",
-        sidebarPath: "./crypto/sidebars.js",
-      }),
-    ],
-  ],
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css",
+      type: "text/css",
       integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
+        "sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM",
+      crossorigin: "anonymous",
     },
   ],
   themeConfig:
