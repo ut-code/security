@@ -1,17 +1,17 @@
-const fs = require("fs");
-const express = require("express");
-const ejs = require("ejs");
-const app = express();
+import fs from "fs";
+import express from "express";
+import ejs from "ejs";
+import prisma from "@prisma/client";
+const router = express.Router();
 
-app.use(express.urlencoded({ extended: true }));
+router.use(express.urlencoded({ extended: true }));
 
-const prisma = require("@prisma/client");
 const client = new prisma.PrismaClient();
 
-app.use("/css", express.static("css"));
-app.use("/img", express.static("img"));
+router.use("/css", express.static("./practice-sql/css"));
+router.use("/img", express.static("./practice-sql/img"));
 
-app.get("/", async (request, response) => {
+router.get("/", async (request, response) => {
   let mails = [];
   const FROM = request.query.from;
   try {
@@ -28,12 +28,12 @@ app.get("/", async (request, response) => {
         console.log("invalid input");
       }
     }
-    const template = fs.readFileSync("template.ejs", "utf-8");
+    const template = fs.readFileSync("./practice-sql/template.ejs", "utf-8");
     const html = ejs.render(template, {
-    queryFrom: request.query.from,
-    mails: [],
-    isError: true,
-  });
+      queryFrom: request.query.from,
+      mails: [],
+      isError: true,
+    });
     return response.send(html);
   }
 
@@ -54,4 +54,4 @@ app.get("/", async (request, response) => {
   response.send(html);
 });
 
-app.listen(3000);
+export default router;

@@ -14,9 +14,9 @@ import rehypeKatex from "rehype-katex";
 /** @type {import("@docusaurus/types").Config} */
 const config = {
   title: "あなたのためのプログラミング",
-  tagline: "ut.code(); 第74回駒場祭企画",
+  tagline: "ut.code(); 第75回駒場祭企画",
   favicon: "img/favicon.ico",
-  url: "https://kf74.utcode.net",
+  url: "https://kf75.utcode.net",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
