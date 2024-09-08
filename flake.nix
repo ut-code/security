@@ -14,6 +14,7 @@
           buildInputs = with pkgs; [
             nodePackages.prisma
             yarn
+            go
           ];
 
           shellHook = with pkgs; ''
