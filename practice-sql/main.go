@@ -24,20 +24,9 @@ type Mail struct {
 }
 
 func Route(g *echo.Group) {
-	// todo: generate db every conn
-	db, err := gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
-	if err != nil {
-		log.Fatalln(err)
-	}
-	_ = db.AutoMigrate(&Mail{})
-	err = Prefill(db)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
 	g.Static("/", "./practice-sql/assets")
 
-	g.File("/", "./practice-sql/index.html")
+	g.File("", "./practice-sql/index.html")
 
 	type Resp struct {
 		IsError   bool
@@ -47,6 +36,12 @@ func Route(g *echo.Group) {
 	}
 
 	g.GET("/search", func(c echo.Context) error {
+		db, err := initDB()
+		if err != nil {
+			log.Println(err)
+			return c.String(500, "failed to init db")
+		}
+
 		from := c.QueryParam("from")
 		var resp Resp
 		var mails []Mail
@@ -69,12 +64,37 @@ func Route(g *echo.Group) {
 				resp.Content = mails
 			}
 		}
-		var b bytes.Buffer
-		err := searchTmpl.Execute(&b, resp)
+
+		html, err := execTemplate(searchTmpl, resp)
 		if err != nil {
 			return c.String(500, err.Error())
 		}
-		html, _ := io.ReadAll(&b)
-		return c.HTML(200, string(html))
+		return c.HTML(200, html)
 	})
+}
+
+func initDB() (*gorm.DB, error) {
+	db, err := gorm.Open(sqlite.Open(":memory:"), &gorm.Config{})
+	if err != nil {
+		return nil, err
+	}
+	_ = db.AutoMigrate(&Mail{})
+	err = Prefill(db)
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
+}
+
+func execTemplate(t *template.Template, input any) (string, error) {
+	var b bytes.Buffer
+	err := t.Execute(&b, input)
+	if err != nil {
+		return "", err
+	}
+	output, err := io.ReadAll(&b)
+	if err != nil {
+		return "", err
+	}
+	return string(output), nil
 }
