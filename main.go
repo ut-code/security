@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	practicesql "github.com/ut-code/security/practice-sql/practice-sql"
 )
 
@@ -25,6 +26,7 @@ func init() {
 
 func main() {
 	e := echo.New()
+	e.Pre(middleware.AddTrailingSlash())
 
 	e.Static("/", "./build")
 

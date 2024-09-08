@@ -35,7 +35,7 @@ func Route(g *echo.Group) {
 		Content   []Mail
 	}
 
-	g.GET("/search", func(c echo.Context) error {
+	g.GET("/search/", func(c echo.Context) error {
 		db, err := initDB()
 		if err != nil {
 			log.Println(err)
