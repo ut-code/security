@@ -26,7 +26,7 @@ type Mail struct {
 func Route(g *echo.Group) {
 	g.Static("/", "./practice-sql/assets")
 
-	g.File("", "./practice-sql/index.html")
+	g.File("/", "./practice-sql/index.html")
 
 	type Resp struct {
 		IsError   bool
