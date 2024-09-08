@@ -1,12 +1,14 @@
 # Dependencies
 /node_modules
 
+/.env
 # Production
 /build
 
 # Generated files
 .docusaurus
 .cache-loader
+/.direnv
 
 # Misc
 .DS_Store
