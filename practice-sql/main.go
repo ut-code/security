@@ -15,12 +15,12 @@ var searchTmpl = template.Must(template.ParseFiles("./practice-sql/templates/sea
 
 type Mail struct {
 	gorm.Model
-	Subject string
-	Date    string
-	From    string
-	ToType  string // ?
-	To      string
-	Content string
+	Date    string        `yaml:"date"`
+	From    string        `yaml:"from"`
+	ToType  string        `yaml:"toType"` // BCC or CC
+	To      string        `yaml:"to"`
+	Subject string        `yaml:"subject"`
+	Content template.HTML `yaml:"content"`
 }
 
 func Route(g *echo.Group) {
@@ -46,7 +46,7 @@ func Route(g *echo.Group) {
 		var resp Resp
 		var mails []Mail
 		if from == "" {
-			err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場優'`).Find(&mails).Error
+			err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場 優' ORDER BY date DESC`).Find(&mails).Error
 			if err != nil {
 				resp.IsError = true
 				resp.Error = err.Error()
@@ -55,7 +55,7 @@ func Route(g *echo.Group) {
 				resp.Content = mails
 			}
 		} else {
-			err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場優' AND "from" = '` + from + `'`).Find(&mails).Error
+			err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場 優' AND "from" = '` + from + `' ORDER BY date DESC`).Find(&mails).Error
 			if err != nil {
 				resp.IsError = true
 				resp.Error = err.Error()
