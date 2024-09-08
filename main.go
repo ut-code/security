@@ -3,12 +3,25 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 	practicesql "github.com/ut-code/security/practice-sql/practice-sql"
 )
 
-const PORT uint16 = 4000
+var PORT uint16 = 4000
+
+func init() {
+	port := os.Getenv("PORT")
+	if port != "" {
+		port, err := strconv.Atoi(port)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		PORT = uint16(port)
+	}
+}
 
 func main() {
 	e := echo.New()

@@ -63,6 +63,8 @@
 .side-selector {
   margin: 15px 15px 15px 0px;
   font-weight: bold;
+  color: black;
+  text-decoration: none;
   background-color: #e4ecf7;
   padding: 8px;
   padding-left: 20px;
@@ -70,11 +72,6 @@
   border-radius: 0px 50px 50px 0px;
   display: flex;
   align-items: center;
-}
-
-a {
-  color: black;
-  text-decoration: none;
 }
 
 .side_selector_icon {

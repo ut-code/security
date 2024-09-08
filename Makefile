@@ -1,13 +1,15 @@
 setup: 
-		yarn install;
-		cd ./practice-sql; npm ci; npx prisma generate
+	yarn install;
+	go mod tidy
 
-start:build serve
+start: build 
+	make serve
 
 build:
-		yarn build;
+	yarn build
+	go build -o serve .
 
 serve:
-		node main.mjs;
+	./serve
 
 
