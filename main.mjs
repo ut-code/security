@@ -1,7 +1,8 @@
 import express from "express";
 import practiceRouter from "./practice-sql/main.mjs";
 const app = express();
-const port = 4000;
+const PORT = parseInt(process.env.PORT);
+const port = PORT || 4000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
