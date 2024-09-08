@@ -1,0 +1,27 @@
+{{ if .IsError }}
+<p>不正なSQL文です: {{ .Error }}</p>
+{{ else if .NoContent }}
+<p>メールはありません。</p>
+{{ else }}
+{{ range .Content }}
+<div class="mail-container">
+  <div class="mail-subject-date-container">
+    <h2 class="mail-subject">
+      {{ .Subject}}
+    </h2>
+    <p class="mail-date">
+      {{ .Date}}
+    </p>
+  </div>
+  <h3 class="mail-sender">
+    {{ .From }}
+  </h3>
+  <p class="mail-receiver">
+    {{ .ToType}}: {{ .To }}
+  </p>
+  <p class="mail-content">
+    {{ .Content }}
+  </p>
+</div>
+{{ end }}
+{{ end }}
