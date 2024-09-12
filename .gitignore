@@ -4,6 +4,7 @@
 /.env
 # Production
 /build
+/serve
 
 # Generated files
 .docusaurus
