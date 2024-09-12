@@ -32,10 +32,6 @@ func main() {
 
 	practicesql.Route(e.Group("/practice-sql"))
 
-	e.GET("/", func(c echo.Context) error {
-		return c.String(200, "Hello from Echo!")
-	})
-
 	if err := e.Start(":" + fmt.Sprint(PORT)); err != nil {
 		log.Fatalln(err)
 	}
