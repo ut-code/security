@@ -12,6 +12,7 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
+            nodejs-slim_22
             nodePackages.prisma
             yarn
             go
