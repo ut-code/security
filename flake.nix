@@ -15,6 +15,7 @@
             nodePackages.prisma
             yarn
             go
+            just
           ];
 
           shellHook = with pkgs; ''
