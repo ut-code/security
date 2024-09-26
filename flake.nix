@@ -16,7 +16,7 @@
             nodePackages.prisma
             yarn
             go
-            just
+            gnumake
           ];
 
           shellHook = with pkgs; ''

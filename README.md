@@ -32,6 +32,17 @@ This command generates static content into the `build` directory and can be serv
 
 ### Deployment
 
+```sh
+# setup command:
+make prepare-deploy
+```
+
+```sh
+# start command:
+make deploy
+```
+
+--- 
 Using SSH:
 
 ```
