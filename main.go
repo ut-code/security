@@ -11,7 +11,7 @@ import (
 	practicesql "github.com/ut-code/security/practice-sql/practice-sql"
 )
 
-var PORT uint16 = 4000
+var PORT uint16 = 3000
 
 func init() {
 	port := os.Getenv("PORT")
