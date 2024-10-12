@@ -97,7 +97,7 @@ SQL では、通常「かつ」は「または」より優先されます。
 あなたはG国の検察官として働いています。ある日、プロ野球リーグで八百長事件が発覚したとの情報が入りました。あなたは、この八百長事件の証拠を見つけ、首謀者を特定するよう依頼されています。
 下のリンクをクリックして、SQL インジェクションの脆弱性を持つメールサービスからデータを盗み出してみましょう。
 
-<p><a href="./practice-sql" target="_blank" rel="noreferrer" className="button button--primary button--block">SQL インジェクションの脆弱性を持つメールサービスを開く</a></p>
+<p><a href="/practice-sql" target="_blank" rel="noreferrer" className="button button--primary button--block">SQL インジェクションの脆弱性を持つメールサービスを開く</a></p>
 
 SQL によりデータを取得するには、SELECT 文を用います。
 事前情報により、このメールサービスでは、SQL の雛型として、次のような SELECT 文を用いていることが分かっています。
