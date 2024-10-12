@@ -46,7 +46,7 @@ func Route(g *echo.Group) {
 		var resp Resp
 		var mails []Mail
 		if from == "" {
-			err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場 優' ORDER BY date DESC`).Find(&mails).Error
+			err := db.Raw(`SELECT * FROM mails WHERE "to" = 'マイク・ジョンソン' ORDER BY date DESC`).Find(&mails).Error
 			if err != nil {
 				resp.IsError = true
 				resp.Error = err.Error()
