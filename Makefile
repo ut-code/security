@@ -3,13 +3,13 @@ setup:
 	go mod tidy
 
 prepare-deploy:
-	just setup
-	just build
+	make setup
+	make build
 deploy:
-	just serve
+	make serve
 
 start: build 
-	just serve
+	make serve
 
 build:
 	@# build doc

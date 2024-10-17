@@ -11,13 +11,13 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 ### Setup
 
 ```sh
-just setup
+make setup
 ```
 
 ### Local Development
 
 ```sh
-just start
+make start
 ```
 
 This command starts a local development server on port 4000 and opens up a localhost:4000.
@@ -25,7 +25,7 @@ This command starts a local development server on port 4000 and opens up a local
 ### Build
 
 ```sh
-just build
+make build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
@@ -34,12 +34,12 @@ This command generates static content into the `build` directory and can be serv
 
 ```sh
 # setup command:
-just prepare-deploy
+make prepare-deploy
 ```
 
 ```sh
 # start command:
-just deploy
+make deploy
 ```
 
 --- 
