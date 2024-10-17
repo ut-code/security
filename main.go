@@ -32,6 +32,8 @@ func main() {
 
 	practicesql.Route(e.Group("/practice-sql"))
 
+	e.Static("/cracker.app", "./cracker-app/")
+
 	if err := e.Start(":" + fmt.Sprint(PORT)); err != nil {
 		log.Fatalln(err)
 	}
