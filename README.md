@@ -2,7 +2,7 @@
 
 Forked from [kf74-website](https://github.com/ut-code/kf74-website)
 
-Copy from [practice-sql](https://github.com/brdgb/practice-sql)
+Contains some copy from [practice-sql](https://github.com/brdgb/practice-sql)
 
 # Website
 
@@ -10,22 +10,22 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 ### Setup
 
-```
-$ make setup
+```sh
+just setup
 ```
 
 ### Local Development
 
-```
-$ make start
+```sh
+just start
 ```
 
 This command starts a local development server on port 4000 and opens up a localhost:4000.
 
 ### Build
 
-```
-$ make build
+```sh
+just build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
@@ -34,12 +34,12 @@ This command generates static content into the `build` directory and can be serv
 
 ```sh
 # setup command:
-make prepare-deploy
+just prepare-deploy
 ```
 
 ```sh
 # start command:
-make deploy
+just deploy
 ```
 
 --- 
