@@ -1,18 +1,19 @@
 # Dependencies
-node_modules
+node_modules/
 
 # Private
 /.env
 
-# Artifact / generated files
-/build
+# Build output / generated files
+/dist/
 /serve
-.docusaurus
-.cache-loader
 /.direnv
+/.astro/
 
 # Editor
 .DS_Store
+.idea/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
