@@ -1,6 +1,6 @@
 <script lang="ts">
-const text = "Count";
-const count = 3;
+  let text = "Count";
+  let count = 3;
 </script>
 
 <div>{text}: {count}</div>
