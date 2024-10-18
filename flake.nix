@@ -13,7 +13,7 @@
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
             nodejs-slim_22
-            nodePackages.prisma
+            nodePackages."@astrojs/language-server"
             bun
             go
             gnumake
