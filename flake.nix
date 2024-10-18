@@ -14,7 +14,6 @@
           buildInputs = with pkgs; [
             nodejs-slim_22
             nodePackages."@astrojs/language-server"
-            biome
             bun
             go
             gnumake
