@@ -15,7 +15,6 @@
             nodejs-slim_22
             nodePackages.prisma
             bun
-            yarn
             go
             gnumake
           ];
