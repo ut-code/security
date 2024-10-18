@@ -3,5 +3,20 @@
 	"files": {
 		"include": ["src"],
 		"ignore": ["bak", "node_modules"]
-	}
+	},
+	"javascript": {
+		"globals": ["Astro"]
+	},
+	"overrides": [
+		{
+			"include": ["*.svelte"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off"
+					}
+				}
+			}
+		}
+	]
 }
