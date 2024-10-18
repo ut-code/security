@@ -4,9 +4,11 @@ node_modules/
 # Private
 /.env
 
-# Build output / generated files
+# Build output / Artifacts
 /dist/
 /serve
+
+# generated files
 /.direnv
 /.astro/
 
