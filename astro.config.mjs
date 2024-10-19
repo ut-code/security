@@ -1,13 +1,30 @@
-import sitemap from "@astrojs/sitemap";
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
 
-import mdx from "@astrojs/mdx";
-import preact from "@astrojs/preact";
-import svelte from "@astrojs/svelte";
+import preact from '@astrojs/preact';
+
+import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://example.com",
-	integrations: [mdx(), sitemap(), preact(), svelte()],
+    integrations: [starlight({
+        title: 'My Docs',
+        social: {
+            github: 'https://github.com/withastro/starlight',
+        },
+        sidebar: [
+            {
+                label: 'Guides',
+                items: [
+                    // Each item here is one entry in the navigation menu.
+                    { label: 'Example Guide', slug: 'guides/example' },
+                ],
+            },
+            {
+                label: 'Reference',
+                autogenerate: { directory: 'reference' },
+            },
+        ],
+        }), preact(), svelte()],
 });
