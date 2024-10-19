@@ -12,7 +12,7 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
-            nodePackages."@astrojs/language-server"
+            nodejs_22
             biome
             bun
             go
@@ -21,6 +21,7 @@
           ];
 
           shellHook = ''
+            export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
             lefthook install
           '';
         };
