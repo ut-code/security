@@ -1,3 +1,8 @@
+---
+title: XSS
+description: 他のユーザーを妨害しよう
+---
+
 import InteractiveEditor from "@site/components/InteractiveEditor";
 
 # ほかのユーザーを妨害しよう
