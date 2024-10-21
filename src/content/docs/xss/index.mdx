@@ -1,9 +1,9 @@
 ---
 title: XSS
 description: 他のユーザーを妨害しよう
----
 
-import InteractiveEditor from "@site/components/InteractiveEditor";
+---
+import InteractiveEditor from "~/components/InteractiveEditor";
 
 # ほかのユーザーを妨害しよう
 
@@ -23,7 +23,7 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 このとき、Web サーバーがブラウザに対して送り返すデータは、**HTML** や **JavaScript** といったプログラミング言語で記述されています。
 ブラウザは、この HTML や JavaScript を解釈することにより、ウェブサイトを表示しています。
 
-![](./html-response.drawio.svg)
+![](./html-response.png)
 
 ## HTML と JavaScript の基礎文法
 
@@ -33,14 +33,14 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 - HTML: ウェブサイトの構造を表現する
 - JavaScript: HTML から参照され、ウェブサイトに動きを加える
 
-![Web 開発で用いられる言語](./web-development-languages.drawio.svg)
+![Web 開発で用いられる言語](./web-langs.png)
 
 ### HTML
 
 次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
 
 <p>
-  <InteractiveEditor
+  <InteractiveEditor client:only="preact"
     html="Hello <strong>World</strong>"
   />
 </p>
@@ -55,7 +55,7 @@ HTML における `<` から始まり `>` で終わる部分は、**タグ** と
 HTML では、他にも多くのタグが定義されており、ウェブサイトの豊かな表現力を支えています。
 
 <p>
-  <InteractiveEditor
+  <InteractiveEditor client:only="preact"
     html={`
 <input>
 <button>送信</button>
@@ -63,9 +63,7 @@ HTML では、他にも多くのタグが定義されており、ウェブサイ
 <ul>
   <li>キャベツ</li>
   <li>にんじん</li>
-</ul>
-    `.trim()}
-  />
+</ul>`} />
 </p>
 
 ### JavaScript
@@ -74,7 +72,7 @@ Web サイトに動きを与えるためのプログラミング言語である 
 次の例では、JavaScript を用いて「Hello World」の「World」の部分を出力しています。
 
 <p>
-  <InteractiveEditor
+  <InteractiveEditor client:only="preact"
     html={`
 Hello
 <script>
@@ -99,7 +97,7 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 次の HTML は、2 人の投稿者がそれぞれ「おはようございます」「こんにちは」と投稿した場合の HTML です。
 
 <p>
-  <InteractiveEditor
+  <InteractiveEditor client:only="preact"
     html={`
 <ul>
   <li>おはようございます</li>
@@ -113,10 +111,10 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 サーバーは受け取った `script` タグを含む投稿を、そのまま他の掲示板利用者に送信してしまいます。
 すると、他のすべての掲示板利用者のブラウザの上で、悪意のある投稿者が記述した任意の JavaScript が実行できてしまいます。
 
-![XSS](./xss.drawio.svg)
+![XSS](./xss.png)
 
 <p>
-  <InteractiveEditor
+  <InteractiveEditor client:only="preact"
     html={`
 <ul>
   <li>おはようございます</li>
@@ -156,4 +154,4 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 `location.href = "URL";` のように記述すると、ブラウザで任意のページを強制的に開かせることができます。
 この機能を悪用し、攻撃者は自身が用意した偽のウェブサイトにアクセスさせることで、被害者から個人情報などを盗み出すことができます。
 
-![リダイレクト](./redirect.drawio.svg)
+![リダイレクト](./redirect.png)

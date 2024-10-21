@@ -5,8 +5,16 @@ import starlight from '@astrojs/starlight';
 import preact from '@astrojs/preact';
 import svelte from '@astrojs/svelte';
 
+
 // https://astro.build/config
 export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '~': '/src',
+      },
+    },
+  },
   integrations: [starlight({
     title: 'My Docs',
     social: {
@@ -29,5 +37,5 @@ export default defineConfig({
         slug: "sql-injection"
       },
     ],
-  }), preact(), svelte()],
+  }), preact({ compat: true }), svelte(),],
 });
