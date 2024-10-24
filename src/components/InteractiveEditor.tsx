@@ -26,62 +26,71 @@ export default function InteractiveEditor(props: InteractiveEditorProps) {
 			}}
 		>
 			<SandpackConsumer>
-				{({ activeFile, setActiveFile }) => (
-					<SandpackLayout>
-						<div
-							style={{
-								flex: "1 1 0px",
-								display: "flex",
-								flexDirection: "column",
-								gap: 1,
-							}}
-						>
-							<Tabs
-								selectedIndex={filePaths.indexOf(activeFile)}
-								onSelect={(index) => setActiveFile(filePaths[index])}
-								selectedTabClassName="tabs__item--active"
-								style={{ backgroundColor: "var(--sp-colors-surface1)" }}
-							>
-								<TabList className="tabs">
-									<Tab
-										className="tabs__item"
-										style={{
-											display: props.html ? "block" : "none",
-											margin: 0,
-										}}
-									>
-										HTML
-									</Tab>
-									<Tab
-										className="tabs__item"
-										style={{
-											display: props.javascript ? "block" : "none",
-											margin: 0,
-										}}
-									>
-										JavaScript
-									</Tab>
-								</TabList>
-							</Tabs>
-							<SandpackCodeEditor showTabs={false} style={{ flex: "1 1 0" }} />
+				{(ctx) => {
+					if (!ctx) return;
+					const { activeFile, setActiveFile } = ctx;
+					return (
+						<SandpackLayout>
 							<div
 								style={{
-									backgroundColor: "var(--sp-colors-surface1)",
-									color: "var(--ifm-font-color-secondary)",
-									padding: "calc(var(--ifm-global-spacing) * 0.5)",
+									flex: "1 1 0px",
+									display: "flex",
+									flexDirection: "column",
+									gap: 1,
 								}}
 							>
-								プログラムを編集すると、自動的にプレビューが更新されます。
+								<Tabs
+									selectedIndex={filePaths.indexOf(activeFile)}
+									onSelect={(index) =>
+										!!filePaths[index] && setActiveFile(filePaths[index])
+									}
+									selectedTabClassName="tabs__item--active"
+									style={{ backgroundColor: "var(--sp-colors-surface1)" }}
+								>
+									<TabList className="tabs">
+										<Tab
+											className="tabs__item"
+											style={{
+												display: props.html ? "block" : "none",
+												margin: 0,
+											}}
+										>
+											HTML
+										</Tab>
+										<Tab
+											className="tabs__item"
+											style={{
+												display: props.javascript ? "block" : "none",
+												margin: 0,
+											}}
+										>
+											JavaScript
+										</Tab>
+									</TabList>
+								</Tabs>
+								<SandpackCodeEditor
+									showTabs={false}
+									style={{ flex: "1 1 0" }}
+								/>
+								<div
+									style={{
+										backgroundColor: "var(--sp-colors-surface1)",
+										color: "var(--ifm-font-color-secondary)",
+										padding: "calc(var(--ifm-global-spacing) * 0.5)",
+									}}
+								>
+									プログラムを編集すると、自動的にプレビューが更新されます。
+								</div>
 							</div>
-						</div>
-						<SandpackPreview
-							showOpenInCodeSandbox={false}
-							showRefreshButton={false}
-							style={{ height: "unset" }}
-							showNavigator={true}
-						/>
-					</SandpackLayout>
-				)}
+							<SandpackPreview
+								showOpenInCodeSandbox={false}
+								showRefreshButton={false}
+								style={{ height: "unset" }}
+								showNavigator={true}
+							/>
+						</SandpackLayout>
+					);
+				}}
 			</SandpackConsumer>
 		</SandpackProvider>
 	);
