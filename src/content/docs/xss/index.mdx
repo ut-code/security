@@ -4,7 +4,7 @@ description: 他のユーザーを妨害しよう
 prev: false
 next: false
 ---
-import InteractiveEditor from "~/components/InteractiveEditor";
+import InteractiveEditor from "~/components/InteractiveEditor.svelte";
 
 # ほかのユーザーを妨害しよう
 
@@ -41,7 +41,7 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
 
 <p>
-  <InteractiveEditor client:only="preact"
+  <InteractiveEditor client:load
     html="Hello <strong>World</strong>"
   />
 </p>
@@ -56,7 +56,7 @@ HTML における `<` から始まり `>` で終わる部分は、**タグ** と
 HTML では、他にも多くのタグが定義されており、ウェブサイトの豊かな表現力を支えています。
 
 <p>
-  <InteractiveEditor client:only="preact"
+  <InteractiveEditor client:idle
     html={`
 <input>
 <button>送信</button>
@@ -73,7 +73,7 @@ Web サイトに動きを与えるためのプログラミング言語である 
 次の例では、JavaScript を用いて「Hello World」の「World」の部分を出力しています。
 
 <p>
-  <InteractiveEditor client:only="preact"
+  <InteractiveEditor client:idle
     html={`
 Hello
 <script>
@@ -98,7 +98,7 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 次の HTML は、2 人の投稿者がそれぞれ「おはようございます」「こんにちは」と投稿した場合の HTML です。
 
 <p>
-  <InteractiveEditor client:only="preact"
+  <InteractiveEditor client:idle
     html={`
 <ul>
   <li>おはようございます</li>
@@ -115,7 +115,7 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 ![XSS](./xss.png)
 
 <p>
-  <InteractiveEditor client:only="preact"
+  <InteractiveEditor client:idle
     html={`
 <ul>
   <li>おはようございます</li>

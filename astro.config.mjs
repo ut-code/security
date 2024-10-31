@@ -37,5 +37,5 @@ export default defineConfig({
       // or like this.
       // autogenerate: { directory: 'reference' },
     ],
-  }), preact({ compat: true }), svelte(),],
+  }), preact(), svelte(),],
 });
