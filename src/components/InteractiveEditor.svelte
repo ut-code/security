@@ -1,10 +1,10 @@
 <script lang="ts">
-  export let html: string = "";
-  let output: HTMLDivElement;
+export let html = "";
+let output: HTMLDivElement;
 
-  $: {
-    if (output) output.innerHTML = html;
-  }
+$: {
+	if (output) output.innerHTML = html;
+}
 </script>
 
 <div id="wrapper">
