@@ -1,6 +1,6 @@
 module github.com/ut-code/security
 
-go 1.22.5
+go 1.23
 
 require (
 	github.com/go-yaml/yaml v2.1.0+incompatible

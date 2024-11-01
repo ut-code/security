@@ -19,6 +19,8 @@ type Mail struct {
 	Content template.HTML `json:"content" yaml:"content"`
 }
 
+var player = "マイク・ジョンソン"
+
 func Search(c echo.Context) error {
 	db, err := initDB()
 	if err != nil {
@@ -29,14 +31,14 @@ func Search(c echo.Context) error {
 	from := c.QueryParam("from")
 	var mails []Mail
 	if from == "" {
-		err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場 優' ORDER BY date DESC`).Find(&mails).Error
+		err := db.Raw(`SELECT * FROM mails WHERE "to" = '` + player + `' ORDER BY date DESC`).Find(&mails).Error
 		if err != nil {
 			return c.JSON(400, echo.Map{"error": err.Error()})
 		} else {
 			return c.JSON(200, mails)
 		}
 	} else {
-		err := db.Raw(`SELECT * FROM mails WHERE "to" = '駒場 優' AND "from" = '` + from + `' ORDER BY date DESC`).Find(&mails).Error
+		err := db.Raw(`SELECT * FROM mails WHERE "to" = '` + player + `' AND "from" = '` + from + `' ORDER BY date DESC`).Find(&mails).Error
 		if err != nil {
 			return c.JSON(400, echo.Map{"error": err.Error()})
 		} else {
