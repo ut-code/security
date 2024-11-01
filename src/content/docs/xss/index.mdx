@@ -41,9 +41,7 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 
 次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
 
-<p>
-  <InteractiveEditor client:load html="Hello <strong>World</strong>" />
-</p>
+<InteractiveEditor client:load html="Hello <strong>World</strong>" />
 
 HTML における `<` から始まり `>` で終わる部分は、**タグ** と呼ばれます。
 タグはそれぞれ固有の意味を持ち、 `<tag>内容</tag>` のように、タグ名の先頭にスラッシュを付けるか否かの区別により開始タグと終了タグに分かれ、内部にテキストや別のタグを挟み込むことができます。
@@ -54,10 +52,10 @@ HTML における `<` から始まり `>` で終わる部分は、**タグ** と
 
 HTML では、他にも多くのタグが定義されており、ウェブサイトの豊かな表現力を支えています。
 
-<p>
-  <InteractiveEditor
-    client:idle
-    html={`
+{" "}
+<InteractiveEditor
+  client:idle
+  html={`
 <input>
 <button>送信</button>
 <h3>買い物リスト</h3>
@@ -65,25 +63,23 @@ HTML では、他にも多くのタグが定義されており、ウェブサイ
   <li>キャベツ</li>
   <li>にんじん</li>
 </ul>`}
-  />
-</p>
+/>
 
 ### JavaScript
 
 Web サイトに動きを与えるためのプログラミング言語である JavaScript は、通常 HTML の中に埋め込まれる形で記述されます。
 次の例では、JavaScript を用いて「Hello World」の「World」の部分を出力しています。
 
-<p>
-  <InteractiveEditor
-    client:idle
-    html={`
+{" "}
+<InteractiveEditor
+  client:idle
+  html={`
 Hello
 <script>
   document.write("World");
 </script>
     `.trim()}
-  />
-</p>
+/>
 
 HTML の中で JavaScript を使用するためには、`script` タグを用います。
 この例では、`document.write("World");` の部分が JavaScript になっており、このプログラムが実行されることで、`World` が出力されます。
@@ -99,17 +95,16 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 箇条書きを表示することのできる HTML タグは、`ul` タグと `li` タグです。
 次の HTML は、2 人の投稿者がそれぞれ「おはようございます」「こんにちは」と投稿した場合の HTML です。
 
-<p>
-  <InteractiveEditor
-    client:idle
-    html={`
+{" "}
+<InteractiveEditor
+  client:idle
+  html={`
 <ul>
   <li>おはようございます</li>
   <li>こんにちは</li>
 </ul>
     `.trim()}
-  />
-</p>
+/>
 
 しかし、もし悪意のある投稿者が、`script` タグを含む投稿を行ったらどうなるでしょう。
 サーバーは受け取った `script` タグを含む投稿を、そのまま他の掲示板利用者に送信してしまいます。
@@ -117,18 +112,17 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 
 ![XSS](./xss.png)
 
-<p>
-  <InteractiveEditor
-    client:idle
-    html={`
+{" "}
+<InteractiveEditor
+  client:idle
+  html={`
 <ul>
   <li>おはようございます</li>
   <li>こんにちは</li>
   <li><script>document.write("Boom!");</script></li>
 </ul>
     `.trim()}
-  />
-</p>
+/>
 
 上の例では、攻撃者は `script` タグの中で `document.write` を記述しています。
 このプログラムが実行されることで、`Boom!` が表示されています。

@@ -1,22 +1,20 @@
 <script lang="ts">
-  export let html = "";
-  let output: HTMLDivElement;
-
-  $: {
-    if (output) output.innerHTML = html;
-  }
+  type Props = {
+    html: string;
+  };
+  let { html }: Props = $props();
 </script>
 
 <div id="wrapper">
   <div id="side-menu">
     <span>HTML</span>
-    <textarea bind:value={html} rows="10" style="width: 100%;" />
+    <textarea bind:value={html} rows="10" style="width: 100%;"></textarea>
   </div>
   <div id="emu">
     <div id="browser-header">
-      <div id="url-box" />
+      <div id="url-box"></div>
     </div>
-    <div bind:this={output} id="content" />
+    {@html html}
   </div>
 </div>
 
