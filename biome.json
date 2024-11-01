@@ -1,22 +1,22 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"files": {
-		"include": ["src"],
-		"ignore": ["bak", "node_modules", ".direnv"]
-	},
-	"javascript": {
-		"globals": ["Astro"]
-	},
-	"overrides": [
-		{
-			"include": ["*.svelte"],
-			"linter": {
-				"rules": {
-					"style": {
-						"useConst": "off"
-					}
-				}
-			}
-		}
-	]
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "files": {
+    "include": ["src"],
+    "ignore": ["bak", "node_modules", ".direnv"]
+  },
+  "javascript": {
+    "globals": ["Astro"]
+  },
+  "overrides": [
+    {
+      "include": ["*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off"
+          }
+        }
+      }
+    }
+  ]
 }

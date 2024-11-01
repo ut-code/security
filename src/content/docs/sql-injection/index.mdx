@@ -106,9 +106,14 @@ SQL では、通常「かつ」は「または」より優先されます。
 あなたはF国のプロ野球リーグの調査委員会のメンバーです。最近、F国のプロ野球リーグで八百長の疑惑が持ち上がり、リーグの試合結果が不正に 操作されている可能性があるとされています。あなたの任務は、この疑惑を解明し、関連する証拠を収集することです。調査の一環として、リーグ 関係者がやり取りするメールの内容を確認する必要があります。
 
 <p>
-<a href="/apps/practice-sql" target="_blank" rel="noreferrer" className="button button--primary button--block">
-SQL インジェクションの脆弱性を持つメールサービスを開く
-</a>
+  <a
+    href="/apps/practice-sql"
+    target="_blank"
+    rel="noreferrer"
+    className="button button--primary button--block"
+  >
+    SQL インジェクションの脆弱性を持つメールサービスを開く
+  </a>
 </p>
 
 SQL によりデータを取得するには、SELECT 文を用います。
@@ -119,13 +124,14 @@ SELECT * FROM "Mail" WHERE "from" = '⭐️' AND "to" = 'あなた';
 ```
 
 メールサイト上部にある入力欄に入力された内容が上の⭐️に代入されます。例えば、入力欄に Aさん と入力すると
+
 ```sql
 SELECT * FROM "Mail" WHERE "from" = 'Aさん' AND "to" = 'あなた';
 ```
+
 というSQL文になります。これによって、『送信者』が「Aさん」かつ『宛先』が「あなた」のメールを検索できます。
 
 SELECT 文は、次のような構文を持ちます。
-
 
 ```sql
 SELECT 取得する属性名 FROM データの種類 WHERE 条件
@@ -152,18 +158,14 @@ SELECT 取得する属性名 FROM データの種類 WHERE 条件
 の 6 つであることが分かっています。
 
 <details>
-   <summary>課題のヒント</summary>
-   <div>
-      入力欄に `Aさん' OR "from"='Aさん`と入力すると、
-      ```sql
-      SELECT * FROM "Mail" WHERE "from" = '⭐️' AND "to" = 'あなた';
-      ```
-      の⭐️に、入力内容が代入されるので、
-      データベースに送信されるSQL文は
-      ```sql
-      SELECT * FROM "Mail" WHERE "from" = 'Aさん' OR "from"='Aさん' AND "to" = 'あなた';
-      ```
-      となり、Aさんが送信したメールをすべて抽出することができます。
-      ⭐️が`Aさん' OR "from"='Aさん`に置き換わることで、全体としての意味が大きく変化していることに注目してください。
-   </div>
+  <summary>課題のヒント</summary>
+  <div>
+    入力欄に `Aさん' OR "from"='Aさん`と入力すると、 ```sql SELECT * FROM "Mail"
+    WHERE "from" = '⭐️' AND "to" = 'あなた'; ```
+    の⭐️に、入力内容が代入されるので、 データベースに送信されるSQL文は ```sql
+    SELECT * FROM "Mail" WHERE "from" = 'Aさん' OR "from"='Aさん' AND "to" =
+    'あなた'; ``` となり、Aさんが送信したメールをすべて抽出することができます。
+    ⭐️が`Aさん' OR
+    "from"='Aさん`に置き換わることで、全体としての意味が大きく変化していることに注目してください。
+  </div>
 </details>

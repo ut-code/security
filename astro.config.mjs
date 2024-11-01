@@ -1,41 +1,44 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
 
-import preact from '@astrojs/preact';
-import svelte from '@astrojs/svelte';
-
+import preact from "@astrojs/preact";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '~': '/src',
+        "~": "/src",
       },
     },
   },
-  integrations: [starlight({
-    title: 'ハッカーになろう',
-    social: {
-      github: 'https://github.com/ut-code/security',
-    },
-    sidebar: [
-      {
-        label: 'SQL インジェクション',
-        slug: "sql-injection"
+  integrations: [
+    starlight({
+      title: "ハッカーになろう",
+      social: {
+        github: "https://github.com/ut-code/security",
       },
-      {
-        label: 'XSS',
-        slug: "xss"
-      },
-      // you can also do something like this:
-      // items: [
-      //   // Each item here is one entry in the navigation menu.
-      //   { label: 'Example Guide', slug: 'guides/example' },
-      // ],
-      // or like this.
-      // autogenerate: { directory: 'reference' },
-    ],
-  }), preact(), svelte(),],
+      sidebar: [
+        {
+          label: "SQL インジェクション",
+          slug: "sql-injection",
+        },
+        {
+          label: "XSS",
+          slug: "xss",
+        },
+        // you can also do something like this:
+        // items: [
+        //   // Each item here is one entry in the navigation menu.
+        //   { label: 'Example Guide', slug: 'guides/example' },
+        // ],
+        // or like this.
+        // autogenerate: { directory: 'reference' },
+      ],
+    }),
+    preact(),
+    svelte(),
+  ],
 });
