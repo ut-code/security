@@ -1,11 +1,27 @@
-# Starlight Starter Kit: Basics
+# ut.code(); 五月祭・駒場祭企画「ハッカーになろう」
+
+build with Astro & starlight:
+
+## 環境構築
+
+Nix を入れるか、flake.nix を読んで適切なソフトウェアを入手してください。
+
+## 開発サーバー実行 (フロントエンドのみ)
+
+```sh
+bun watch
+```
+
+## サーバー実行 (バックエンドサービス含む)
+
+```sh
+# build
+bun run build
+# serve
+bun serve
+```
 
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
-
-```
-npm create astro@latest -- --template starlight
-```
-
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)

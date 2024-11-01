@@ -1,0 +1,11 @@
+name: Keep-Alive Workflow
+on:
+  schedule:
+    - cron: '*/10 * * * *' # Runs every 10 minutes
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send HTTP Request
+      run:  curl -s https://try-sql-injection.onrender.com/ > /dev/null

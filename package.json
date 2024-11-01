@@ -3,10 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "watch": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
+    "watch": "trap 'kill 0' EXIT; go run . & astro dev & wait",
+    "watch:frontend": "astro dev",
+    "start": "bun run build && bun serve",
+    "build": "bun build:frontend && bun build:server",
+    "build:frontend": "astro check && astro build",
+    "build:server": "go build -o serve",
+    "serve": "./serve",
     "astro": "astro"
   },
   "dependencies": {
@@ -15,16 +18,13 @@
     "@astrojs/react": "^3.6.2",
     "@astrojs/starlight": "^0.28.4",
     "@astrojs/svelte": "^5.7.2",
-    "@codesandbox/sandpack-react": "^2.19.9",
     "astro": "^4.16.8",
     "preact": "^10.24.3",
-    "react-tabs": "^6.0.2",
     "sharp": "^0.33.5",
     "svelte": "^5.1.6",
     "typescript": "^5.6.3"
   },
   "overrides": {
-    "react": "npm:@preact/compat@latest",
-    "react-dom": "npm:@preact/compat@latest"
+    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
   }
 }
