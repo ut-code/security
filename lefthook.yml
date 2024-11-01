@@ -1,5 +1,5 @@
 pre-commit:
-  # parallel: true
+  parallel: true
   commands:
     prettier:
       glob: "*"
