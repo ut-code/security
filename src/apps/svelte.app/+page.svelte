@@ -1,7 +1,7 @@
 <script lang="ts">
-let count = 0;
-let input = "Count: ";
-console.log("rendering");
+  let count = 0;
+  let input = "Count: ";
+  console.log("rendering");
 </script>
 
 <div>

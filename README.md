@@ -42,7 +42,7 @@ bun serve
 
 - Development
   - Nix
-  - Biome
+  - Biome (as a linter)
   - Prettier
   - GitHub Actions
 

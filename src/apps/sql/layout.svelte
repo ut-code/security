@@ -1,11 +1,11 @@
 <script lang="ts">
-import type { Snippet } from "svelte";
+  import type { Snippet } from "svelte";
 
-type Props = {
-	children: Snippet;
-	selected: "all" | "search";
-};
-const { children, selected }: Props = $props();
+  type Props = {
+    children: Snippet;
+    selected: "all" | "search";
+  };
+  const { children, selected }: Props = $props();
 </script>
 
 <svelte:head>

@@ -1,57 +1,59 @@
 <script lang="ts">
-// FIXME: sometimes japanese text corrupts, and I don't know why.
-import { onMount } from "svelte";
-import { API_ENDPOINT } from "../../share/env";
+  // FIXME: sometimes japanese text corrupts, and I don't know why.
+  import { onMount } from "svelte";
+  import { API_ENDPOINT } from "../../share/env";
 
-type Mail = {
-	subject: string;
-	date: string;
-	from: string;
-	toType: string;
-	to: string;
-	sender: string;
-	content: string;
-};
-type Success = {
-	ok: true;
-	mails: Mail[];
-};
-type Fail = {
-	ok: false;
-	status: number;
-	error: string;
-};
-// WARNING: this never resolves without the onMount below.
-let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
-onMount(() => {
-	search_result = search("");
-});
+  type Mail = {
+    subject: string;
+    date: string;
+    from: string;
+    toType: string;
+    to: string;
+    sender: string;
+    content: string;
+  };
+  type Success = {
+    ok: true;
+    mails: Mail[];
+  };
+  type Fail = {
+    ok: false;
+    status: number;
+    error: string;
+  };
+  // WARNING: this never resolves without the onMount below.
+  let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
+  onMount(() => {
+    search_result = search("");
+  });
 
-let selected: "all" | "search" = $state("all");
+  let selected: "all" | "search" = $state("all");
 
-async function search(from: string): Promise<Success | Fail> {
-	const query =
-		from === "" ? "/services/sql/search" : `/services/sql/search?from=${from}`;
-	selected = from === "" ? "all" : "search";
-	return fetch(API_ENDPOINT + query).then(async (res) => {
-		switch (res.status) {
-			case 200:
-			case 204:
-				return {
-					ok: true,
-					mails: await res.json(),
-				};
-			default:
-				return {
-					ok: false,
-					status: res.status,
-					error: (await res.json()).error,
-				};
-		}
-	});
-}
+  async function search(from: string): Promise<Success | Fail> {
+    const query =
+      from === ""
+        ? "/services/sql/search"
+        : `/services/sql/search?from=${from}`;
+    selected = from === "" ? "all" : "search";
+    return fetch(API_ENDPOINT + query).then(async (res) => {
+      switch (res.status) {
+        case 200:
+        case 204:
+          return {
+            ok: true,
+            mails: await res.json(),
+          };
+        default:
+          return {
+            ok: false,
+            status: res.status,
+            error: (await res.json()).error,
+          };
+      }
+    });
+  }
 
-let from = $state("");
+  let from = $state("");
 </script>
 
 {#snippet app()}

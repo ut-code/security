@@ -13,8 +13,8 @@
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
             nodejs_22
-            biome
             bun
+            biome
             go
             gnumake
             lefthook
