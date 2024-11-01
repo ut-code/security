@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { API_ENDPOINT } from "../../share/env";
+  import { API_ENDPOINT } from "../../../share/env";
 
   type Mail = {
     subject: string;
