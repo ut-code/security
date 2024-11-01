@@ -118,8 +118,6 @@
 
 <svelte:head>
   <meta charset="utf-8" />
-  <meta lang="ja" />
-  <span hidden>言語: 日本語</span>
   <title>Ginkgo Mail</title>
   <link rel="icon" href="/sql/img/favicon.svg" />
 </svelte:head>
@@ -129,20 +127,29 @@
     <img src="/sql/img/GinkgoMail_logo.svg" alt="" class="header_logo" />
     <button
       class="side-selector"
+      style="display: block; width: calc(100% - 15px); text-align: left;"
       class:selected={selected === "all"}
       onclick={() => (search_result = search(""))}
     >
-      <img src="/sql/img/all_mail_icon.svg" alt="" class="side_selector_icon" />
-      <div>全てのメール</div>
-    </button>
-    <div class="side-selector" class:selected={selected === "search"}>
       <img
-        src="/sql/img/search_mail_icon.svg"
+        src="/sql/img/all_mail_icon.svg"
         alt=""
         class="side_selector_icon"
+        style="vertical-align: middle;"
       />
-      <label for="from"> 差出人で絞り込み </label>
-    </div>
+      <span style="font-size: 16px;"> 全てのメール </span>
+    </button>
+    <label for="from" style="font-size: 16px; width: 100%;">
+      <div class="side-selector" class:selected={selected === "search"}>
+        <img
+          src="/sql/img/search_mail_icon.svg"
+          alt=""
+          class="side_selector_icon"
+          style="height: 22px; align-self: center;"
+        />
+        差出人で絞り込み
+      </div>
+    </label>
   </div>
   <div class="mail-wrapper">
     <div class="mail-header">

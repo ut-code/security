@@ -14,9 +14,14 @@ export default defineConfig({
       },
     },
   },
+  i18n: {
+    defaultLocale: "ja",
+    locales: ["ja"],
+  },
   integrations: [
     starlight({
       title: "ハッカーになろう",
+      defaultLocale: "ja",
       social: {
         github: "https://github.com/ut-code/security",
       },
