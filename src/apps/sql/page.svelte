@@ -22,10 +22,6 @@ type Fail = {
 };
 // WARNING: this never resolves without the onMount below.
 let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
-$effect(() => {
-	search_result.then((res) => console.log(res));
-});
-
 onMount(() => {
 	search_result = search("");
 });

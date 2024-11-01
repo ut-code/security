@@ -19,7 +19,7 @@ type Mail struct {
 	Content template.HTML `json:"content" yaml:"content"`
 }
 
-var player = "マイク・ジョンソン"
+var player = "駒場 優"
 
 func Search(c echo.Context) error {
 	db, err := initDB()
