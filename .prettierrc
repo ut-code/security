@@ -1,8 +1,5 @@
 {
-  "plugins": [
-    "prettier-plugin-svelte",
-    "prettier-plugin-astro"
-  ],
+  "plugins": ["prettier-plugin-svelte", "prettier-plugin-astro"],
   "overrides": [
     {
       "files": "*.svelte",

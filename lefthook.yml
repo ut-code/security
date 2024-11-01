@@ -2,7 +2,7 @@ pre-commit:
   # parallel: true
   commands:
     prettier:
-      glob: "*.{js,ts,jsx,tsx,astro,svelte,md,mdx}"
+      glob: "{*.{js,ts,jsx,tsx,astro,svelte,md,mdx,json,yml,yaml},.prettierrc}"
       run: bunx prettier {staged_files} --write
       stage_fixed: true
     biome:
@@ -11,4 +11,3 @@ pre-commit:
       stage_fixed: true
     prevent-commit-on-main:
       run: if [ "`git branch --show-current`" == 'main' ]; then echo 'Cannot make commit on main!'; exit 1; fi
-      
