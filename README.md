@@ -1,8 +1,19 @@
 # ut.code(); 五月祭・駒場祭企画「ハッカーになろう」
 
-build with Astro & starlight:
+build with Astro & starlight!
 
-## 環境構築
+## 開発
+
+### 開発上の注意
+
+DaisyUI が導入されていますが、諸事情 (名前の conflict) により、 DaisyUI のクラスの prefix が `daisy-` に設定されています。
+例:
+
+```html
+<a class="daisy-btn daisy-btn-primary"> Daisy Button </a>
+```
+
+### 環境構築
 
 Nix を入れるか、flake.nix を読んで適切なソフトウェアを入手してください。
 
@@ -13,7 +24,7 @@ Nix を入れるか、flake.nix を読んで適切なソフトウェアを入手
 - Lefthook
 - Biome
 - Go
-- Just (https://github.com/casey/just)
+<!-- - Just (https://github.com/casey/just) -->
 
 Nix を使わない場合は、以下のコマンドも実行してください。
 
@@ -21,7 +32,9 @@ Nix を使わない場合は、以下のコマンドも実行してください�
 lefthook install
 ```
 
-## 開発サーバー実行
+また、依存関係が変わるたびに `bun install` を実行してください。
+
+### 開発モードで実行
 
 フロントエンドは変更が自動的に反映されます。
 
@@ -29,12 +42,12 @@ lefthook install
 bun watch
 ```
 
-## サーバー実行
+### ビルドしてプレビュー
 
 ```sh
 # build
 bun run build
-# serve
+# preview
 bun preview
 ```
 
@@ -65,11 +78,11 @@ go build -o serve .
   - Astro
     - Starlight
   - Svelte
-  - Preact
+  - Preact (unused)
   - TailwindCSS
   - DaisyUI
 
-- Backend
+- Backend (service provider)
 
   - Golang
   - Echo

@@ -1,5 +1,4 @@
 <script lang="ts">
-  // FIXME: sometimes japanese text corrupts, and I don't know why.
   import { onMount } from "svelte";
   import { API_ENDPOINT } from "../../share/env";
 

@@ -14,7 +14,9 @@
     <div id="browser-header">
       <div id="url-box"></div>
     </div>
-    {@html html}
+    <div>
+      {@html html}
+    </div>
   </div>
 </div>
 

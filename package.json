@@ -17,6 +17,7 @@
     "@astrojs/preact": "^3.5.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/starlight": "^0.28.4",
+    "@astrojs/starlight-tailwind": "^2.0.3",
     "@astrojs/svelte": "^5.7.2",
     "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.8",

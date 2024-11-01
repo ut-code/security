@@ -22,7 +22,10 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: "ハッカーになろう",
+      title: {
+        en: "Become a Hacker!",
+        ja: "ハッカーになろう",
+      },
       defaultLocale: "ja",
       social: {
         github: "https://github.com/ut-code/security",
@@ -44,9 +47,12 @@ export default defineConfig({
         // or like this.
         // autogenerate: { directory: 'reference' },
       ],
+      customCss: ["./src/tailwind.css"],
     }),
     preact(),
     svelte(),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
   ],
 });

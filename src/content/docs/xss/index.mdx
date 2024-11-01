@@ -41,7 +41,11 @@ Safari や Google Chrome のように、ウェブサイトを見るためのソ�
 
 次の HTML は、画面に「Hello <strong>World</strong>」と表示するプログラムです。
 
-<InteractiveEditor client:load html="Hello <strong>World</strong>" />
+<InteractiveEditor
+  client:load
+  html="Hello <strong>World</strong>"
+  class="not-content"
+/>
 
 HTML における `<` から始まり `>` で終わる部分は、**タグ** と呼ばれます。
 タグはそれぞれ固有の意味を持ち、 `<tag>内容</tag>` のように、タグ名の先頭にスラッシュを付けるか否かの区別により開始タグと終了タグに分かれ、内部にテキストや別のタグを挟み込むことができます。
@@ -56,6 +60,7 @@ HTML では、他にも多くのタグが定義されており、ウェブサイ
 
 <InteractiveEditor
   client:idle
+  class="not-content"
   html={`
 <input>
 <button>送信</button>
@@ -75,6 +80,7 @@ Web サイトに動きを与えるためのプログラミング言語である 
 
 <InteractiveEditor
   client:idle
+  class="not-content"
   html={`
 Hello
 <script>
@@ -101,6 +107,7 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 
 <InteractiveEditor
   client:idle
+  class="not-content"
   html={`
 <ul>
   <li>おはようございます</li>
@@ -119,6 +126,7 @@ JavaScript は、ウェブブラウザ上でのリッチな表現を可能にし
 
 <InteractiveEditor
   client:idle
+  class="not-content"
   html={`
 <ul>
   <li>おはようございます</li>
