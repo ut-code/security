@@ -16,8 +16,8 @@
             bun
             biome
             go
-            gnumake
             lefthook
+            just
           ];
 
           shellHook = ''

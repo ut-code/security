@@ -6,6 +6,21 @@ build with Astro & starlight:
 
 Nix を入れるか、flake.nix を読んで適切なソフトウェアを入手してください。
 
+2024/11/1 時点での必要なソフトウェア:
+
+- Node.js
+- Bun
+- Lefthook
+- Biome
+- Go
+- Just (https://github.com/casey/just)
+
+Nix を使わない場合は、以下のコマンドも実行してください。
+
+```sh
+lefthook install
+```
+
 ## 開発サーバー実行
 
 フロントエンドは変更が自動的に反映されます。
@@ -33,6 +48,8 @@ bun serve
     - Starlight
   - Svelte
   - Preact
+  - TailwindCSS
+  - DaisyUI
 
 - Backend
 
