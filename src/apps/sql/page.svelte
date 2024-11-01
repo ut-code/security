@@ -167,6 +167,9 @@
 </div>
 
 <style>
+  :global(body) {
+    background-color: white;
+  }
   .header_logo {
     width: 100%;
   }
