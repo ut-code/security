@@ -29,13 +29,31 @@ lefthook install
 bun watch
 ```
 
-## サーバー実行 (バックエンドサービス含む)
+## サーバー実行
 
 ```sh
 # build
 bun run build
 # serve
-bun serve
+bun preview
+```
+
+## Deploy
+
+web
+(env) PUBLIC_API_ENDPOINT=...
+
+```sh runtime=node
+bun run build:frontend
+static-web-server ./dist # or better, use a static hosting service
+```
+
+server
+(env) CORS_ALLOW_ORIGINS=...
+
+```sh runtime=go
+go build -o serve .
+./serve
 ```
 
 ## 技術 Stack

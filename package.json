@@ -9,7 +9,7 @@
     "build": "bun build:frontend && bun build:server",
     "build:frontend": "astro check && astro build",
     "build:server": "go build -o serve",
-    "serve": "./serve",
+    "preview": "astro preview & ./serve",
     "astro": "astro"
   },
   "dependencies": {

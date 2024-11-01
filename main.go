@@ -25,7 +25,11 @@ func init() {
 		PORT = uint16(port)
 	}
 
-	godotenv.Load()
+	err := godotenv.Load()
+	if err != nil {
+		// godotenv's code says it won't error if .env doesn't exist, so it's ok to fatalize this even on prod.
+		log.Fatalln(err)
+	}
 	var allowOrigins = strings.Split(os.Getenv("CORS_ALLOW_ORIGINS"), ",")
 	fmt.Println("[debug] allowOrigins:", allowOrigins)
 	cors = middleware.CORSWithConfig(middleware.CORSConfig{
@@ -41,7 +45,6 @@ func main() {
 
 	e.Pre(middleware.AddTrailingSlash())
 	e.GET("/services/sql/search/", sql.Search)
-	e.Static("/", "./dist")
 
 	if err := e.Start(":" + fmt.Sprint(PORT)); err != nil {
 		log.Fatalln(err)
