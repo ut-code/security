@@ -1,0 +1,13 @@
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*"
+      run: bunx prettier --write --ignore-unknown -- {staged_files}
+      stage_fixed: true
+    biome:
+      glob: "*"
+      run: biome lint --write --no-errors-on-unmatched --files-ignore-unknown=true -- {staged_files}
+      stage_fixed: true
+    prevent-commit-on-main:
+      run: if [ "`git branch --show-current`" == 'main' ]; then echo 'Cannot make commit on main!'; exit 1; fi

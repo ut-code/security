@@ -1,9 +1,10 @@
-module github.com/ut-code/security/practice-sql
+module github.com/ut-code/security
 
 go 1.23
 
 require (
 	github.com/go-yaml/yaml v2.1.0+incompatible
+	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/microcosm-cc/bluemonday v1.0.27
 	github.com/russross/blackfriday/v2 v2.1.0
