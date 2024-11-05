@@ -4,10 +4,10 @@
   "version": "0.0.1",
   "scripts": {
     "watch": "trap 'kill 0' EXIT; go run . & astro dev & wait",
-    "watch:frontend": "astro dev",
+    "watch:web": "astro dev",
     "start": "bun run build && bun serve",
-    "build": "bun build:frontend && bun build:server",
-    "build:frontend": "astro check && astro build",
+    "build": "bun build:web && bun build:server",
+    "build:web": "astro check && astro build",
     "build:server": "go build -o serve",
     "preview": "astro preview & ./serve",
     "astro": "astro"
