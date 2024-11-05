@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { API_ENDPOINT } from "../../../share/env";
+  import "~/tailwind.css";
 
   type Mail = {
     subject: string;
@@ -65,7 +66,7 @@
   >
     <input
       id="from"
-      class="search-bar"
+      class="search-bar text-slate-600"
       placeholder="差出人を入力"
       bind:value={from}
     />
@@ -125,7 +126,7 @@
   <div class="sidebar">
     <img src="/sql/img/GinkgoMail_logo.svg" alt="" class="header_logo" />
     <button
-      class="side-selector"
+      class="side-selector outline-none"
       style="display: block; width: calc(100% - 15px); text-align: left;"
       class:selected={selected === "all"}
       onclick={() => (search_result = search(""))}
