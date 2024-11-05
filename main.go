@@ -25,7 +25,7 @@ func init() {
 		PORT = uint16(port)
 	}
 
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
 		// godotenv's code says it won't error if .env doesn't exist, so it's ok to fatalize this even on prod.
 		log.Fatalln(err)
