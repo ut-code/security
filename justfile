@@ -19,5 +19,5 @@ prepare-srv:
     cd services; bun sql/prepare.ts
     just test-srv
 test-srv:
-    cd services; bunx tsc . --noEmit
+    cd services; bunx tsc --noEmit
     cd services; bun test

@@ -1,5 +1,5 @@
 import { Database } from "bun:sqlite";
-import type { Mail } from "./srv.test";
+import type { Mail } from "./types.dev";
 
 const dbName = `${import.meta.dir}/sqlite.db`;
 const db = new Database(dbName);

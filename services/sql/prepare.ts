@@ -30,14 +30,11 @@ const data = yaml.parse(buf) as unknown;
 if (!Array.isArray(data))
   throw new Error("Parsing Error: data from data.yml is not array");
 for (const raw of data) {
-  const m = v.parse(Mail, raw);
-  const values = [m.id, m.from, m.toType, m.to, m.date, m.subject, m.content]
-    .map((k) => `'${k}'`)
-    .join(", ");
+  const mail = v.parse(Mail, raw);
   db.query(
     `
 INSERT INTO mails ("id", "from", "toType", "to", "date", "subject", "content")
-VALUES (${values satisfies string});
+VALUES ($id, $from, $toType, $to, $date, $subject, $content);
 `,
-  ).run();
+  ).run(mail);
 }
