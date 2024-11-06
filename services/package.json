@@ -1,5 +1,5 @@
 {
-  "name": "security services",
+  "name": "security-worker",
   "version": "0.0.0",
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.5.24",
