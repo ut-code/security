@@ -2,21 +2,22 @@ import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 import * as sqlService from "./sql/srv";
 
+const env = (name: string) => Bun.env[name] || panic(`env ${name} not found`);
+const CORS_ORIGINS = env("CORS_ALLOW_ORIGINS").split(",");
+
 export const app = new Elysia()
   .use(
     cors({
-      origin:
-        Bun.env.CORS_ALLOW_ORIGINS?.split(",") ||
-        panic("env CORS_ALLOW_ORIGINS not found"),
+      origin: CORS_ORIGINS,
     }),
   )
   .get("/", "Hello from Elysia on Cloudflare Worker!")
-  .get("/sql?from?", (req) => {
+  .get("/sql?from?", async (req) => {
     const query = req.query.from;
     if (query) {
-      return sqlService.from(query);
+      return await sqlService.from(query);
     }
-    return sqlService.all();
+    return await sqlService.all();
   });
 
 function panic(msg: string): never {

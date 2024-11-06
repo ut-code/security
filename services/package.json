@@ -20,7 +20,7 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "better-sqlite3": "^11.5.0",
-    "elysia": "^1.1.24"
+    "elysia": "^1.1.24",
+    "sqlite3": "^5.1.7"
   }
 }
