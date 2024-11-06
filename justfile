@@ -9,8 +9,12 @@ watch:
         bun watch:web & \
         wait
 test: test-srv
+setup: 
+    bun install
+    cd services; bun install
 prepare: prepare-srv
 
+# srvs
 watch-srv:
     todo
 # run locally
