@@ -10,13 +10,10 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-
-import { type ExportedHandler, Response } from "@cloudflare/workers-types";
+import { app } from "./app";
 
 export default {
-  async fetch(request, env, ctx): Promise<Response> {
-    return new Response("Hello World!");
+  async fetch(req: Request, _env: unknown, _ctx: unknown): Promise<Response> {
+    return app.fetch(req);
   },
-} satisfies ExportedHandler<Env>;
-
-type Env = Record<string, never>;
+};
