@@ -1,4 +1,4 @@
-import { Database } from "bun:sqlite";
+const { Database } = await import("bun:sqlite").catch(console.warn); // wrangler can't identify this at build time
 import type { Mail } from "./types.dev";
 
 const dbName = `${import.meta.dir}/sqlite.db`;

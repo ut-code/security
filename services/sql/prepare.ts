@@ -1,4 +1,4 @@
-const { Database } = await import("bun:sqlite");
+import { Database } from "bun:sqlite";
 import * as v from "valibot";
 import * as yaml from "yaml";
 import { Mail } from "./types.dev";
