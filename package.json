@@ -3,13 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "watch": "trap 'kill 0' EXIT; go run . & astro dev & wait",
-    "watch:web": "astro dev",
-    "start": "bun run build && bun serve",
-    "build": "bun build:web && bun build:server",
-    "build:web": "astro check && astro build",
-    "build:server": "go build -o serve",
-    "preview": "astro preview & ./serve",
+    "watch": "astro dev",
+    "build": "astro check && astro build",
+    "serve": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
@@ -31,6 +27,7 @@
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.13",
     "daisyui": "^4.12.14",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
