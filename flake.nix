@@ -4,20 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
     flake-utils.url = "github:numtide/flake-utils";
-    fenix.url = "github:nix-community/fenix";
   };
 
-  outputs = { nixpkgs, flake-utils, fenix, ... }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        toolchain = import ./services { inherit system fenix; };
       in
       {
         devShell = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = with pkgs; [
-            toolchain
             nodejs_22
             bun
             biome
