@@ -16,7 +16,7 @@ prepare: prepare-srv
 
 # srvs
 watch-srv:
-    todo
+    cd services; bun --watch dev.ts
 # run locally
 prepare-srv:
     cd services; bun i
