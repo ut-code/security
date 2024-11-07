@@ -1,4 +1,6 @@
-import { app } from "./app";
-import { swagger } from "@elysiajs/swagger";
+import * as sqlService from "./sql/bun.adapter";
+import { App } from "./app";
 
-app.use(swagger()).listen(3000);
+App.create({
+	db: sqlService,
+}).listen(3000);

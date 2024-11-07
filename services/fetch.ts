@@ -10,10 +10,21 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
-import { app } from "./app";
+
+export interface Env {
+  // If you set another name in wrangler.toml as the value for 'binding',
+  // replace "DB" with the variable name you defined.
+  DB: D1Database;
+}
+
+import { App } from "./app";
+import { prepare } from "./sql/prepare";
+
+const db = env.DB;
+prepare();
 
 export default {
   async fetch(req: Request, _env: unknown, _ctx: unknown): Promise<Response> {
-    return app.fetch(req);
+    return App.create({} as never).fetch(req);
   },
 };

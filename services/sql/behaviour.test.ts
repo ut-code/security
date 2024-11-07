@@ -1,6 +1,6 @@
-import { expect, test } from "bun:test";
+import { beforeAll, expect, test } from "bun:test";
 import * as v from "valibot";
-import * as srv from "./srv";
+import * as srv from "./bun.adapter";
 import { Mail } from "./types.dev";
 
 test("injectable", () => {
