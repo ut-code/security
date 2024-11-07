@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { API_ENDPOINT } from "../../../share/env";
+  import { init } from "./sql";
 
   type Mail = {
     subject: string;
@@ -17,9 +17,9 @@
   };
   type Fail = {
     ok: false;
-    status: number;
     error: string;
   };
+
   // WARNING: this never resolves without the onMount below.
   let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
   onMount(() => {
@@ -28,28 +28,27 @@
 
   let selected: "all" | "search" = $state("all");
 
+  const sql = init();
   async function search(from: string): Promise<Success | Fail> {
     const query =
       from === ""
         ? "/services/sql/search"
         : `/services/sql/search?from=${from}`;
     selected = from === "" ? "all" : "search";
-    return fetch(API_ENDPOINT + query).then(async (res) => {
-      switch (res.status) {
-        case 200:
-        case 204:
-          return {
-            ok: true,
-            mails: await res.json(),
-          };
-        default:
-          return {
-            ok: false,
-            status: res.status,
-            error: (await res.json()).error,
-          };
-      }
-    });
+    try {
+      const result = (await sql)(query);
+      console.log(result);
+      throw "todo";
+      // return {
+      //   ok: true,
+      //   mails: result.map((row) => row.values),
+      // };
+    } catch (err) {
+      return {
+        ok: false,
+        error: String(err),
+      };
+    }
   }
 
   let from = $state("");
