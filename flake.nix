@@ -18,7 +18,6 @@
             nodejs_22
             bun
             biome
-            go
             lefthook
             just
           ];
