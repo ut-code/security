@@ -56,7 +56,8 @@ bun preview
 完全な静的サイトになりました。
 
 ```sh
-bun run build:frontend
+bun install
+bun run build
 static-web-server ./dist # or better, use a static hosting service
 ```
 
