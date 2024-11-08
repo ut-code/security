@@ -1,6 +1,7 @@
 default: watch
 setup:
     bun install
+    lefthook install
     just _prepare
 start: build
     bun preview
