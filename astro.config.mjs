@@ -10,15 +10,15 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    resolve: {
-      alias: {
-        "~": "/src",
-      },
-    },
+    resolve: {},
   },
   i18n: {
     defaultLocale: "ja",
     locales: ["ja"],
+  },
+  prefetch: {
+    defaultStrategy: "hover",
+    prefetchAll: true,
   },
   integrations: [
     starlight({

@@ -1,7 +1,7 @@
 import initSqlJs from "sql.js";
 import { Mail } from "./types";
 import * as v from "valibot";
-import { sqljs_wasm } from "../../../cdn";
+import { sqljs_wasm } from "src/cdn";
 
 export async function init() {
   const res = await fetch("/sql-data.sqlite");
