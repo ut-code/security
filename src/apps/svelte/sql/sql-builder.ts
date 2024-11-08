@@ -10,18 +10,18 @@ export function sql(a: TemplateStringsArray, ...vals: string[]) {
   }
   return query;
 }
+const player = "駒場 優";
 
 export function from(from: string) {
-  return sql`SELECT * FROM mails WHERE "to" = '駒場 優' AND "from" = '${from}' ORDER BY date DESC`;
+  return sql`SELECT * FROM mails WHERE "to" = ${player} AND "from" = ${from} ORDER BY "date" DESC`;
 }
 
-export const all = sql`SELECT * FROM mails WHERE "to" = '駒場 優' ORDER BY date DESC`;
+export const all = sql`SELECT * FROM mails WHERE "to" = ${player} ORDER BY "date" DESC`;
 
 // don't expose this to users
 export const everything = sql`SELECT * FROM mails`;
 
 export const create = sql`
-
 CREATE TABLE IF NOT EXISTS mails (
   "id" VARCHAR(16) NOT NULL,
   "from" VARCHAR(32) NOT NULL,

@@ -1,13 +1,22 @@
 default: watch
-start: build 
+setup:
+    bun install
+    just _prepare
+start: build
     bun preview
-build: prepare
+build: _prepare
     bun run build
-watch: prepare
+watch: _prepare
     bun watch
-test: prepare
-    bunx tsc --noEmit
-    bun test
-prepare:
-    bun prepare/index.ts
+check: _prepare _test
+    biome lint
+    bunx prettier . --check
+fix: _prepare _test
+    biome lint --fix
+    bunx prettier . --write
 
+# individual commands
+_test:
+    bun test
+_prepare:
+    bun prepare/index.ts

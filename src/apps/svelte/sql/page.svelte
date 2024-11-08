@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { QueryExecResult } from "sql.js";
   import { onMount } from "svelte";
   import { init } from "./init-sqlite";
   import { sql } from "./sql-builder";
@@ -20,6 +21,8 @@
     ok: false;
     error: string;
   };
+  type Props = { data: string };
+  const { data }: Props = $props();
 
   // WARNING: this never resolves without the onMount below.
   let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
@@ -29,10 +32,7 @@
 
   let selected: "all" | "search" = $state("all");
 
-  const exec = fetch("/data/sql.json.base64")
-    .then((res) => res.text())
-    .then((data) => init(data));
-
+  const exec: Promise<(stmt: string) => QueryExecResult[]> = init(data);
   const player = "komabayuu";
   async function search(from: string): Promise<Success | Fail> {
     const query =

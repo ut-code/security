@@ -1,8 +1,15 @@
+import { $ } from "bun";
 import * as v from "valibot";
-import { Mail } from "./../src/apps/svelte/sql/types";
 import yaml from "yaml";
+import { Mail } from "./../src/apps/svelte/sql/types";
 
 export default async function () {
+  // copy sql.js to public
+  await $`
+cd ${import.meta.dir}; cd ..;
+cp ./node_modules/sql.js public/ -r;
+`;
+
   const text = await Bun.file(`${import.meta.dir}/sql.data.yaml`).bytes();
   const parsed: unknown = yaml.parse(String.fromCharCode(...text));
 
@@ -12,7 +19,7 @@ export default async function () {
 
   const base64 = btoa(JSON.stringify(data));
 
-  Bun.file(`${import.meta.dir}/../public/sql/data.json.base64`)
+  Bun.file(`${import.meta.dir}/../src/pages/apps/sql-data.json.base64.js`)
     .writer()
-    .write(base64);
+    .write(`export default "${base64}"`);
 }
