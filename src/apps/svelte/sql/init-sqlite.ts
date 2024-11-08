@@ -26,7 +26,7 @@ export async function init(source: Base64String) {
   const db = new (
     await initSqlJs({
       locateFile() {
-        return "/sql.js/dist/sql-wasm.wasm";
+        return "/sql-wasm.wasm";
       },
     })
   ).Database();

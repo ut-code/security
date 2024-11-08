@@ -7,7 +7,7 @@ export default async function () {
   // copy sql.js to public
   await $`
 cd ${import.meta.dir}; cd ..;
-cp ./node_modules/sql.js public/ -r;
+cp ./node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm ;
 `;
 
   const text = await Bun.file(`${import.meta.dir}/sql.data.yaml`).bytes();

@@ -9,7 +9,7 @@ node_modules/
 /serve
 /security
 /src/pages/apps/sql-data*
-/public/sql.js
+/public/sql-wasm.wasm
 
 # generated files
 /.direnv
