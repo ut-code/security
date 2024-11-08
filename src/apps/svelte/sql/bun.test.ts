@@ -1,20 +1,13 @@
 import Database from "bun:sqlite";
 import { expect, test } from "bun:test";
 import * as v from "valibot";
-import b64 from "../../../pages/apps/sql-data.json.base64.js";
-import { insert, sql } from "./sql-builder";
-import { create } from "./sql-builder";
+import { sql } from "./sql-builder";
 import { Mail } from "./types";
 
 // init DB
-const json = Buffer.from(b64, "base64").toString("utf8");
-const mails: Mail[] = v.parse(v.array(Mail), JSON.parse(json));
-const db = new Database(":memory:");
-db.exec(create);
-
-for (const mail of mails) {
-  db.exec(insert(mail));
-}
+const db = new Database(
+  `${import.meta.dir}/../../../../public/sql-data.sqlite`,
+);
 
 // testing
 function exec(query: string) {
