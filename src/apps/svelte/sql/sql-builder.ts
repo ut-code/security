@@ -22,6 +22,7 @@ export const all = sql`SELECT * FROM mails WHERE "to" = ${player} ORDER BY "date
 export const everything = sql`SELECT * FROM mails`;
 
 export const create = sql`
+PRAGMA encoding="UTF-8";
 CREATE TABLE IF NOT EXISTS mails (
   "id" VARCHAR(16) NOT NULL,
   "from" VARCHAR(32) NOT NULL,

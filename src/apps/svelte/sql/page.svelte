@@ -2,15 +2,8 @@
   import { onMount } from "svelte";
   import { init } from "./init-sqlite";
   import * as builder from "./sql-builder";
+  import type { Mail } from "./types";
 
-  type Mail = {
-    subject: string;
-    date: string;
-    from: string;
-    toType: string;
-    to: string;
-    content: string;
-  };
   type Success = {
     ok: true;
     mails: Mail[];
@@ -19,8 +12,6 @@
     ok: false;
     error: string;
   };
-  type Props = { data: string };
-  const { data }: Props = $props();
 
   // WARNING: this never resolves without the onMount below.
   let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
@@ -30,7 +21,11 @@
 
   let selected: "all" | "search" = $state("all");
 
-  const exec: Promise<(stmt: string) => Mail[]> = init(data);
+  const exec: Promise<(stmt: string) => Mail[]> = (async () => {
+    const res = await fetch("/sql-data.sqlite");
+    const sqlite = new Uint8Array(await res.arrayBuffer());
+    return init(sqlite);
+  })();
   async function search(from: string): Promise<Success | Fail> {
     const query = from === "" ? builder.all : builder.from(from);
     selected = from === "" ? "all" : "search";

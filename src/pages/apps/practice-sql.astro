@@ -1,6 +1,5 @@
 ---
 import App from "../../apps/svelte/sql/page.svelte";
-import data from "./sql-data.json.base64.js";
 ---
 
 <html lang="ja">
@@ -8,6 +7,6 @@ import data from "./sql-data.json.base64.js";
     <meta charset="utf-8" />
   </head>
   <body>
-    <App client:only data={data} />
+    <App client:only />
   </body>
 </html>

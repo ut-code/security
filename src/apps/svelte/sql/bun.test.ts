@@ -26,7 +26,7 @@ function exec(query: string) {
     throw null;
   }
 }
-const player = "komabayuu";
+const player = "駒場 優";
 
 test("builder", () => {
   expect(sql`SELECT * FROM users;`).toBe("SELECT * FROM users;");
