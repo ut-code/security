@@ -1,12 +1,13 @@
 import initSqlJs from "sql.js";
 import { Mail } from "./types";
 import * as v from "valibot";
+import { sqljs_wasm } from "../../../cdn";
 
 export async function init(sqlite: Uint8Array) {
   const db = new (
     await initSqlJs({
       locateFile() {
-        return "/sql-wasm.wasm";
+        return sqljs_wasm;
       },
     })
   ).Database(sqlite);

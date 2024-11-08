@@ -7,12 +7,6 @@ import * as builder from "../src/apps/svelte/sql/sql-builder";
 
 const Data = v.array(Mail);
 export default async function () {
-  // copy sql.js to public
-  await $`
-cd ${import.meta.dir}; cd ..;
-cp ./node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm ;
-`;
-
   // create sqlite file
   const text = await Bun.file(`${import.meta.dir}/sql.data.yaml`).text();
   const parsed: unknown = yaml.parse(text);
