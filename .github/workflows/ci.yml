@@ -33,4 +33,4 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - uses: extractions/setup-just@v2
       - run: just setup
-      - run: just test
+      - run: bun test
