@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@elysiajs/swagger": "^1.1.5",
-    "elysia": "^1.1.24",
-    "sqlite3": "^5.1.7"
+    "elysia": "^1.1.24"
   }
 }
