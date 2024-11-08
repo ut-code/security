@@ -1,7 +1,7 @@
 default: watch
 setup:
     bun install
-    lefthook install
+    lefthook install || true # it's ok to fail
     just _prepare
 build: _prepare
     bun run build
