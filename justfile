@@ -3,8 +3,6 @@ setup:
     bun install
     lefthook install
     just _prepare
-start: build
-    bun preview
 build: _prepare
     bun run build
 watch: _prepare
