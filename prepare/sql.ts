@@ -1,9 +1,9 @@
 import { $ } from "bun";
 import * as v from "valibot";
 import yaml from "yaml";
-import { Mail } from "./../src/apps/svelte/sql/types";
+import { Mail } from "src/apps/svelte/sql/types";
 import Database from "bun:sqlite";
-import * as builder from "../src/apps/svelte/sql/sql-builder";
+import * as builder from "src/apps/svelte/sql/sql-builder";
 
 const Data = v.array(Mail);
 export default async function () {
