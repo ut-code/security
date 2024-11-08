@@ -8,6 +8,7 @@ node_modules/
 /dist/
 /serve
 /security
+/public/sql/data.json.base64
 
 # generated files
 /.direnv

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { init } from "./sql";
+  import { init } from "./init-sqlite";
+  import { sql } from "./sql-builder";
 
   type Mail = {
     subject: string;
@@ -28,15 +29,19 @@
 
   let selected: "all" | "search" = $state("all");
 
-  const sql = init();
+  const exec = fetch("/data/sql.json.base64")
+    .then((res) => res.text())
+    .then((data) => init(data));
+
+  const player = "komabayuu";
   async function search(from: string): Promise<Success | Fail> {
     const query =
       from === ""
-        ? "/services/sql/search"
-        : `/services/sql/search?from=${from}`;
+        ? sql`SELECT * FROM mails WHERE to = ${player}`
+        : sql`SELECT * FROM mails WHERE to = ${player} AND from = ${from}`;
     selected = from === "" ? "all" : "search";
     try {
-      const result = (await sql)(query);
+      const result = (await exec)(query);
       console.log(result);
       throw "todo";
       // return {
