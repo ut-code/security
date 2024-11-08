@@ -6,7 +6,7 @@
     "jsxImportSource": "preact",
     "baseUrl": ".",
     "paths": {
-      "~": ["."]
+      "~/*": ["src/*"]
     }
   },
   "include": ["src", "prepare"]
