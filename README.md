@@ -57,6 +57,7 @@ bun preview
 
 ```sh
 bun install
+bun prepare/index.ts
 bun run build
 static-web-server ./dist # or better, use a static hosting service
 ```
