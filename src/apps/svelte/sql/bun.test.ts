@@ -1,12 +1,30 @@
 import { test, expect } from "bun:test";
-import { sql } from "./sql-builder";
+import { insert, sql } from "./sql-builder";
 import * as v from "valibot";
 import Database from "bun:sqlite";
 import { Mail } from "./types";
+import { create } from "./sql-builder";
 
+// init DB
+const source = await Bun.file("./public/sql/data.json.base64").text();
+const json = Buffer.from(source, "base64").toString("utf8");
+const mails: Mail[] = v.parse(v.array(Mail), JSON.parse(json));
 const db = new Database(":memory:");
+db.exec(create);
+
+for (const mail of mails) {
+  db.exec(insert(mail));
+}
+
+// testing
 function exec(query: string) {
-  return db.query(query).all();
+  try {
+    return db.query(query).all();
+  } catch (err) {
+    console.error(`Failed at query ${query}`);
+    console.error(err);
+    throw null;
+  }
 }
 const player = "komabayuu";
 
@@ -27,7 +45,7 @@ const injectQuery = "' OR '' = '";
 test("injectable", () => {
   expect(
     exec(
-      sql`SELECT * FROM mails WHERE "to" = '${player}' AND "from" = ${injectQuery}`,
+      sql`SELECT * FROM mails WHERE "to" = ${player} AND "from" = ${injectQuery}`,
     ).length,
   ).toBeGreaterThan(0);
 });
