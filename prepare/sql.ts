@@ -20,7 +20,7 @@ cp ./node_modules/sql.js/dist/sql-wasm.wasm public/sql-wasm.wasm ;
   const data = v.parse(Data, parsed);
 
   const path = `${import.meta.dir}/../public/sql-data.sqlite`;
-  await $`rm ${path}`;
+  await $`rm ${path}`.catch();
   const db = new Database(path);
   db.exec(builder.create);
   for (const mail of data) {
