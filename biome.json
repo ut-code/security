@@ -1,8 +1,10 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "formatter": {
+    "enabled": false
+  },
   "files": {
-    "include": ["src"],
-    "ignore": ["bak", "node_modules", ".direnv"]
+    "ignore": ["public/sql.js", "dist", "node_modules", ".direnv", ".astro"]
   },
   "javascript": {
     "globals": ["Astro"]

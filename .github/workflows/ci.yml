@@ -26,3 +26,11 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bunx prettier . --check
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: extractions/setup-just@v2
+      - run: just setup
+      - run: bun test

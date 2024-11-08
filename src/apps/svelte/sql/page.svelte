@@ -1,56 +1,43 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { API_ENDPOINT } from "../../../share/env";
   import "~/tailwind.css";
+  import * as builder from "./sql-builder";
+  import type { Mail } from "./types";
 
-  type Mail = {
-    subject: string;
-    date: string;
-    from: string;
-    toType: string;
-    to: string;
-    sender: string;
-    content: string;
-  };
   type Success = {
     ok: true;
     mails: Mail[];
   };
   type Fail = {
     ok: false;
-    status: number;
     error: string;
   };
-  // WARNING: this never resolves without the onMount below.
-  let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
-  onMount(() => {
-    search_result = search("");
-  });
-
   let selected: "all" | "search" = $state("all");
 
+  // WARNING: this never resolves without the onMount below.
+  let search_result: Promise<Success | Fail> = $state(new Promise(() => {}));
+  let exec: Promise<(stmt: string) => Mail[]> = $state(new Promise(() => {}));
+  onMount(async () => {
+    exec = (await import("./init-sqlite")).init();
+    search_result = search("");
+  });
   async function search(from: string): Promise<Success | Fail> {
-    const query =
-      from === ""
-        ? "/services/sql/search"
-        : `/services/sql/search?from=${from}`;
+    const query = from === "" ? builder.all : builder.from(from);
     selected = from === "" ? "all" : "search";
-    return fetch(API_ENDPOINT + query).then(async (res) => {
-      switch (res.status) {
-        case 200:
-        case 204:
-          return {
-            ok: true,
-            mails: await res.json(),
-          };
-        default:
-          return {
-            ok: false,
-            status: res.status,
-            error: (await res.json()).error,
-          };
-      }
-    });
+    try {
+      console.log(query);
+      const result = (await exec)(query);
+      console.log(result);
+      return {
+        ok: true,
+        mails: result as Mail[],
+      };
+    } catch (err) {
+      return {
+        ok: false,
+        error: String(err),
+      };
+    }
   }
 
   let from = $state("");

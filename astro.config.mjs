@@ -1,6 +1,6 @@
+import starlight from "@astrojs/starlight";
 // @ts-check
 import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
 
 import preact from "@astrojs/preact";
 import svelte from "@astrojs/svelte";
@@ -10,15 +10,15 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    resolve: {
-      alias: {
-        "~": "/src",
-      },
-    },
+    resolve: {},
   },
   i18n: {
     defaultLocale: "ja",
     locales: ["ja"],
+  },
+  prefetch: {
+    defaultStrategy: "hover",
+    prefetchAll: true,
   },
   integrations: [
     starlight({
