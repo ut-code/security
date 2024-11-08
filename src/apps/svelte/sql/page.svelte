@@ -9,7 +9,6 @@
     from: string;
     toType: string;
     to: string;
-    sender: string;
     content: string;
   };
   type Success = {

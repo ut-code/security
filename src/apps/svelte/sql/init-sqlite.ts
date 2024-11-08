@@ -1,6 +1,7 @@
 import initSqlJs from "sql.js";
 import { create, insert } from "./sql-builder";
-import type { Mail } from "./types";
+import { Mail } from "./types";
+import * as v from "valibot";
 
 type Base64String = string;
 /* todo
@@ -44,6 +45,13 @@ export async function init(source: Base64String) {
     while (exec.step()) {
       result.push(exec.getAsObject());
     }
-    return result;
+    if (import.meta.env.PROD) return result as Mail[];
+    try {
+      return v.parse(v.array(Mail), result);
+    } catch (err) {
+      console.error("Failed to parse some of stmts to Mail", err);
+      console.error("instead got: ", result);
+      return result as Mail[];
+    }
   };
 }
