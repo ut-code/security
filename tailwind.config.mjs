@@ -1,5 +1,5 @@
-import daisyui from "daisyui";
 import starlightPlugin from "@astrojs/starlight-tailwind";
+import daisyui from "daisyui";
 
 // Generated color palettes
 const accent = {

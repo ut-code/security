@@ -29,7 +29,7 @@ Nix を入れるか、flake.nix を読んで適切なソフトウェアを入手
 Nix を使わない場合は、以下のコマンドも実行してください。
 
 ```sh
-lefthook install
+just setup
 ```
 
 また、依存関係が変わるたびに `bun install` を実行してください。
@@ -39,34 +39,27 @@ lefthook install
 フロントエンドは変更が自動的に反映されます。
 
 ```sh
-bun watch
+just watch
 ```
 
 ### ビルドしてプレビュー
 
 ```sh
 # build
-bun run build
+just build
 # preview
 bun preview
 ```
 
 ## Deploy
 
-web
-(env) PUBLIC_API_ENDPOINT=...
+完全な静的サイトになりました。
 
-```sh runtime=node
-bun run build:frontend
+```sh
+bun install
+bun prepare/index.ts
+bun run build
 static-web-server ./dist # or better, use a static hosting service
-```
-
-server
-(env) CORS_ALLOW_ORIGINS=...
-
-```sh runtime=go
-go build -o serve .
-./serve
 ```
 
 ## 技術 Stack
@@ -82,17 +75,13 @@ go build -o serve .
   - TailwindCSS
   - DaisyUI
 
-- Backend (service provider)
-
-  - Golang
-  - Echo
-  - GORM (w/ sqlite driver)
-
 - Development
   - Nix
   - Biome (as a linter)
   - Prettier
   - GitHub Actions
+  - Lefthook
+  - Just
 
 ---
 

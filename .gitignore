@@ -8,6 +8,9 @@ node_modules/
 /dist/
 /serve
 /security
+# /src/pages/apps/sql-data*
+/public/sql-wasm.wasm
+/public/sql-data.sqlite
 
 # generated files
 /.direnv
