@@ -3,7 +3,9 @@ import { Mail } from "./types";
 import * as v from "valibot";
 import { sqljs_wasm } from "../../../cdn";
 
-export async function init(sqlite: Uint8Array) {
+export async function init() {
+  const res = await fetch("/sql-data.sqlite");
+  const sqlite = new Uint8Array(await res.arrayBuffer());
   const db = new (
     await initSqlJs({
       locateFile() {
