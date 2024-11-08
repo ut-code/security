@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { QueryExecResult } from "sql.js";
   import { onMount } from "svelte";
   import { init } from "./init-sqlite";
-  import { sql } from "./sql-builder";
+  import * as builder from "./sql-builder";
 
   type Mail = {
     subject: string;
@@ -32,22 +31,18 @@
 
   let selected: "all" | "search" = $state("all");
 
-  const exec: Promise<(stmt: string) => QueryExecResult[]> = init(data);
-  const player = "komabayuu";
+  const exec: Promise<(stmt: string) => Mail[]> = init(data);
   async function search(from: string): Promise<Success | Fail> {
-    const query =
-      from === ""
-        ? sql`SELECT * FROM mails WHERE to = ${player}`
-        : sql`SELECT * FROM mails WHERE to = ${player} AND from = ${from}`;
+    const query = from === "" ? builder.all : builder.from(from);
     selected = from === "" ? "all" : "search";
     try {
+      console.log(query);
       const result = (await exec)(query);
       console.log(result);
-      throw "todo";
-      // return {
-      //   ok: true,
-      //   mails: result.map((row) => row.values),
-      // };
+      return {
+        ok: true,
+        mails: result as Mail[],
+      };
     } catch (err) {
       return {
         ok: false,

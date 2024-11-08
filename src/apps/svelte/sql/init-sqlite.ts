@@ -37,5 +37,13 @@ export async function init(source: Base64String) {
     db.exec(insert(mail));
   }
 
-  return (stmt: string) => db.exec(stmt);
+  return (stmt: string) => {
+    // are there really no other ways to do this? db.exec() doesn't work as expected..
+    const exec = db.prepare(stmt);
+    const result = [];
+    while (exec.step()) {
+      result.push(exec.getAsObject());
+    }
+    return result;
+  };
 }
