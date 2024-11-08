@@ -1,19 +1,57 @@
+import Database from "bun:sqlite";
 import { expect, test } from "bun:test";
 import * as v from "valibot";
-import * as srv from "./srv";
-import { Mail } from "./types.dev";
+import { sql } from "./sql-builder";
+import { Mail } from "./types";
 
+// init DB
+const db = new Database(
+  `${import.meta.dir}/../../../../public/sql-data.sqlite`,
+);
+
+// testing
+function exec(query: string) {
+  try {
+    return db.query(query).all();
+  } catch (err) {
+    console.error(`Failed at query ${query}`);
+    console.error(err);
+    throw null;
+  }
+}
+const player = "駒場 優";
+
+test("builder", () => {
+  expect(sql`SELECT * FROM users;`).toBe("SELECT * FROM users;");
+  expect(sql`SELECT * FROM users WHERE id = ${"abc"};`).toBe(
+    "SELECT * FROM users WHERE id = 'abc';",
+  );
+  expect(sql`SELECT ${"a"} + ${"b"} AS "result";`).toBe(
+    "SELECT 'a' + 'b' AS \"result\";",
+  );
+  expect(
+    sql`SELECT ${"many"} ${"more"} ${"args"} ${"and"} ${"still"} ${"be"} ${"fine"}`,
+  ).toBe("SELECT 'many' 'more' 'args' 'and' 'still' 'be' 'fine'");
+});
+
+const injectQuery = "' OR '' = '";
 test("injectable", () => {
-  expect(srv.from(`' OR '' = '`).length).toBeGreaterThan(0);
+  expect(
+    exec(
+      sql`SELECT * FROM mails WHERE "to" = ${player} AND "from" = ${injectQuery}`,
+    ).length,
+  ).toBeGreaterThan(0);
 });
 
 test("type", () => {
-  const val = srv.everything();
+  const val = exec(sql`SELECT * FROM mails`);
   v.parse(Mail, val[0]);
 });
 
 test("all", () =>
-  expect(srv.everything().find((m) => m.id === "5")).toEqual({
+  expect(
+    exec(sql`SELECT * FROM mails`).find((m) => (m as Mail).id === "5"),
+  ).toEqual({
     id: "5",
     from: "ジョン・スミス",
     toType: "to",

@@ -24,7 +24,7 @@
 
           shellHook = ''
             export LD_LIBRARY_PATH=${pkgs.stdenv.cc.cc.lib}/lib
-            lefthook install
+            just setup
           '';
         };
       });

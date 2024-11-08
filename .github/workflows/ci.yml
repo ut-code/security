@@ -26,13 +26,11 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bunx prettier . --check
-  prepare:
-    name: "Prepare should've be done at dev, not at prod"
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
       - uses: extractions/setup-just@v2
       - run: just setup
-      - run: just prepare # test is done here too
-      - run: test "${git diff --short | wc -l}" == 0
+      - run: bun test

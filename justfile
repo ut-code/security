@@ -1,27 +1,21 @@
 default: watch
-start: build 
-    just serve
-build: 
-    bun run build
-watch:
-    trap 'kill 0' EXIT; \
-        just watch:services & \
-        bun watch:web & \
-        wait
-test: test-srv
-setup: 
+setup:
     bun install
-    cd services; bun install
-prepare: prepare-srv
+    lefthook install || true # it's ok to fail
+    just _prepare
+build: _prepare
+    bun run build
+watch: _prepare
+    bun watch
+check: _prepare _test
+    biome lint
+    bunx prettier . --check
+fix: _prepare _test
+    biome lint --fix
+    bunx prettier . --write
 
-# srvs
-watch-srv:
-    cd services; bun --watch dev.ts
-# run locally
-prepare-srv:
-    cd services; bun i
-    cd services; bun sql/prepare.ts
-    just test-srv
-test-srv:
-    cd services; bunx tsc --noEmit
-    cd services; bun test
+# individual commands
+_test:
+    bun test
+_prepare:
+    bun prepare/index.ts
