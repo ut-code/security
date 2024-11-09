@@ -29,13 +29,14 @@
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6"
   },
   "devDependencies": {
-    "sharp": "^0.33.5",
-    "typescript": "^5.6.3",
+    "@types/bcryptjs": "^2.4.6",
     "@types/bun": "^1.1.13",
     "@types/sql.js": "^1.4.9",
     "daisyui": "^4.12.14",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-svelte": "^3.2.7"
+    "prettier-plugin-svelte": "^3.2.7",
+    "sharp": "^0.33.5",
+    "typescript": "^5.6.3"
   }
 }
