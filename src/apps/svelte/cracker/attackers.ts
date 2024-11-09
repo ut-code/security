@@ -32,11 +32,11 @@ const chars =
   " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!`~@#$%^&*(){}[]_+-=<>,./\\'\"";
 
 // FIXME: fix this fn not generating some charsets
-function generateNth(current: number): string {
+export function generateNth(current: number): string {
   let digits = current;
   let retval = "";
   while (digits > 0) {
-    const idx = digits % chars.length;
+    const idx = (digits % chars.length) - 1;
     retval = chars[idx] + retval;
     digits = Math.floor(digits / chars.length);
   }
