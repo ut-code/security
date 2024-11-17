@@ -1,31 +1,24 @@
 import { type HashKind, check } from "./checkers";
-export class Attacker {
-  async iterate(
-    alg: HashKind,
-    hash: string,
-    state: number,
-    iterations: number,
-  ) {
-    let i = state;
-    while (true) {
-      const trial = generateNth(i++);
-      if (await check(alg, trial, hash)) {
-        return { ok: true as const, text: trial, used: i + 1 };
-      }
-      if (i >= state + iterations) {
-        return {
-          ok: false as const,
-          used: iterations,
-          peek: trial,
-        };
-      }
-      i++;
+
+export async function iterate(
+  alg: HashKind,
+  hash: string,
+  state: number,
+  iterations: number,
+) {
+  let trial = "";
+  for (let i = 0; i < iterations; i++) {
+    trial = generateNth(i + state);
+    if (await check(alg, trial, hash)) {
+      return { ok: true as const, text: trial, used: i };
     }
   }
-}
-
-export async function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  if (!trial) throw new Error("zero iterations");
+  return {
+    ok: false as const,
+    used: iterations,
+    peek: trial,
+  };
 }
 
 const chars =
@@ -36,7 +29,7 @@ export function generateNth(current: number): string {
   let digits = current;
   let retval = "";
   while (digits > 0) {
-    const idx = (digits % chars.length) - 1;
+    const idx = digits % chars.length;
     retval = chars[idx] + retval;
     digits = Math.floor(digits / chars.length);
   }

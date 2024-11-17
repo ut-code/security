@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { Attacker, sleep } from "./attackers";
+  import * as attacker from "./attackers";
   import "~/tailwind.css";
-  import type { CheckerKind } from "./checkers";
+  import type { HashKind } from "./checkers";
+  import { sleep } from "./utils";
   const MAX_STEP_CALC = 10000;
 
   let totalCalcs = $state(0);
-  let attacker = new Attacker();
   let foundMessage = $state<string | null>(null);
   let peekMessage = $state<string | null>(null);
   let hash: string = $state("");
-  let alg: CheckerKind = $state("sha256");
+  let alg: HashKind = $state("sha256");
   let status: "ready" | "running" | "paused" | "done" = $state("ready");
 
   function reset() {
@@ -26,7 +26,7 @@
     status = "running";
     while (status === "running") {
       let then = performance.now();
-      const steps = Math.floor(Math.random() * MAX_STEP_CALC);
+      const steps = Math.floor(Math.random() * MAX_STEP_CALC) + 1;
       const res = await attacker.iterate(alg, hash, totalCalcs, steps);
       totalCalcs += res.used;
       if (res.ok) {
@@ -35,18 +35,21 @@
         return;
       }
       peekMessage = res.peek;
-      await sleep(performance.now() - then);
+      await sleep((performance.now() - then) / 3);
     }
   }
 </script>
 
 <p>
-  <input
-    type="text"
+  <textarea
+    class="textarea textarea-bordered w-[480px]"
+    rows="3"
     bind:value={hash}
     onkeydown={() => reset()}
     onchange={() => reset()}
-  />
+  ></textarea>
+</p>
+<p>
   {#if status === "ready"}
     <button class="daisy-btn daisy-btn-primary" onclick={run}> Start </button>
   {:else if status === "paused"}
@@ -89,14 +92,18 @@
         checking messages...
       </span>
     </p>
-    calculated {totalCalcs} so far
     {#if peekMessage}
       <span class="font-mono">{peekMessage}</span>
     {/if}
+    <p>
+      calculated {totalCalcs} so far
+    </p>
   {:else if status === "paused"}
     Paused.
   {:else if status === "done"}
-    Found: <span class="text-xl font-mono">{foundMessage}</span>
-    Total calculation: {totalCalcs}
+    <p>
+      Found: <span class="text-xl font-mono">{foundMessage}</span>
+      Total calculation: {totalCalcs}
+    </p>
   {/if}
 </div>
