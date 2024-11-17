@@ -87,12 +87,12 @@
 <div class="flex h-screen bg-base-200">
   <!-- Sidebar -->
   <div
-    class="bg-base-300 w-64 flex-shrink-0 {sidebarOpen
+    class="w-64 flex-shrink-0 bg-base-300 {sidebarOpen
       ? 'block'
       : 'hidden'} md:block"
   >
     <div class="p-4">
-      <h2 class="text-xl font-bold mb-4">Contacts</h2>
+      <h2 class="mb-4 text-xl font-bold">Contacts</h2>
       <ul>
         <li class="mb-2">
           <a href="#" class="hover:text-primary">John Doe</a>
@@ -108,7 +108,7 @@
   </div>
 
   <!-- Main Chat Area -->
-  <div class="flex flex-col flex-grow">
+  <div class="flex flex-grow flex-col">
     <div class="daisy-navbar bg-base-300">
       <div class="flex-none md:hidden">
         <button
@@ -119,7 +119,7 @@
         </button>
       </div>
       <div class="flex-1">
-        <h1 class="daisy-btn daisy-btn-ghost normal-case text-xl">
+        <h1 class="daisy-btn daisy-btn-ghost text-xl normal-case">
           DaisyUI Chat
         </h1>
       </div>
@@ -137,13 +137,13 @@
       </div>
     </div>
 
-    <div bind:this={scrollArea} class="flex-grow p-4 overflow-y-auto">
+    <div bind:this={scrollArea} class="flex-grow overflow-y-auto p-4">
       {#each messages as message (message.id)}
         <div
           transition:fade
           class="chat {message.sender === 'user' ? 'chat-end' : 'chat-start'}"
         >
-          <div class="daisy-chat-image daisy-avatar">
+          <div class="daisy-avatar daisy-chat-image">
             <div class="w-10 rounded-full">
               <img
                 src={message.sender === "user"
@@ -170,7 +170,7 @@
       {/each}
     </div>
 
-    <form onsubmit={handleSendMessage} class="p-4 bg-base-300">
+    <form onsubmit={handleSendMessage} class="bg-base-300 p-4">
       <div class="daisy-input-group flex">
         <input
           type="text"

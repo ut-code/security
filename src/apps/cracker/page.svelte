@@ -102,7 +102,7 @@
     Paused.
   {:else if status === "done"}
     <p>
-      Found: <span class="text-xl font-mono">{foundMessage}</span>
+      Found: <span class="font-mono text-xl">{foundMessage}</span>
       Total calculation: {totalCalcs}
     </p>
   {/if}
