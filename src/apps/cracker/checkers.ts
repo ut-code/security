@@ -1,5 +1,5 @@
-import * as sha from "js-sha256";
 import * as bcrypt from "bcryptjs";
+import * as sha from "js-sha256";
 
 export type HashKind = "string eq" | "sha256" | "bcrypt";
 export async function check(alg: HashKind, src: string, hash: string) {

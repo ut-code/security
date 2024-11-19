@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-type User = {
+export type User = {
   name: string;
   password: string;
 };
@@ -26,6 +26,9 @@ export const users: User[] = [
     password: "mdn",
   },
 ];
+export function login(name: string, password: string): User | null {
+  return users.find((u) => u.name === name && u.password === password) ?? null;
+}
 
 export const messages = writable([
   {
