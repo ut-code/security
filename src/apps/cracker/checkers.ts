@@ -13,7 +13,7 @@ export async function check(alg: HashKind, src: string, hash: string) {
       return srcHash === hash.trim();
     }
     case "bcrypt":
-      return await bcrypt.compare(src, hash);
+      return await bcrypt.compare(src, hash.trim());
   }
 }
 export async function hash(alg: HashKind, src: string): Promise<string> {
