@@ -39,6 +39,10 @@ export default defineConfig({
           label: "XSS",
           slug: "xss",
         },
+        {
+          label: "パスワード",
+          slug: "password",
+        },
         // you can also do something like this:
         // items: [
         //   // Each item here is one entry in the navigation menu.
