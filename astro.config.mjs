@@ -7,6 +7,9 @@ import svelte from "@astrojs/svelte";
 
 import tailwind from "@astrojs/tailwind";
 
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -20,6 +23,10 @@ export default defineConfig({
     defaultStrategy: "hover",
     prefetchAll: true,
   },
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [
     starlight({
       title: {
@@ -32,17 +39,36 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "SQL インジェクション",
-          slug: "sql-injection",
+          label: "Webサイト編",
+          items: [
+            {
+              label: "SQL インジェクション",
+              slug: "sql-injection",
+            },
+            {
+              label: "XSS",
+              slug: "xss",
+            },
+            {
+              label: "パスワード",
+              slug: "password",
+            },
+          ],
         },
         {
-          label: "XSS",
-          slug: "xss",
+          label: "暗号編",
+          items: [
+            {
+              label: "基礎知識",
+              slug: "crypto-basics",
+            },
+            {
+              label: "RSA暗号",
+              slug: "rsa",
+            },
+          ],
         },
-        {
-          label: "パスワード",
-          slug: "password",
-        },
+
         // you can also do something like this:
         // items: [
         //   // Each item here is one entry in the navigation menu.
