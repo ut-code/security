@@ -1,16 +1,13 @@
 import starlight from "@astrojs/starlight";
-// @ts-check
 import { defineConfig } from "astro/config";
 
-import preact from "@astrojs/preact";
 import svelte from "@astrojs/svelte";
-
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    resolve: {},
+    plugins: [tailwindcss()],
   },
   i18n: {
     defaultLocale: "ja",
@@ -21,15 +18,20 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
+    svelte(),
     starlight({
       title: {
         en: "Become a Hacker!",
         ja: "ハッカーになろう",
       },
       defaultLocale: "ja",
-      social: {
-        github: "https://github.com/ut-code/security",
-      },
+      social: [
+        {
+          icon: "github",
+          label: "GitHub",
+          href: "https://github.com/ut-code/security",
+        },
+      ],
       sidebar: [
         {
           label: "SQL インジェクション",
@@ -51,12 +53,6 @@ export default defineConfig({
         // or like this.
         // autogenerate: { directory: 'reference' },
       ],
-      customCss: ["./src/tailwind.css"],
-    }),
-    preact(),
-    svelte(),
-    tailwind({
-      applyBaseStyles: false,
     }),
   ],
 });

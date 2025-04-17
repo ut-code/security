@@ -1,9 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import "~/tailwind.css";
-  import * as builder from "./sql-builder";
-  import type { Mail } from "./types";
-
+  import * as builder from "./sql-builder.ts";
+  import type { Mail } from "./types.ts";
   type Success = {
     ok: true;
     mails: Mail[];
