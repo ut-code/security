@@ -1,8 +1,9 @@
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 
-import svelte from "@astrojs/svelte";
 import tailwindcss from "@tailwindcss/vite";
+
+import svelte, { vitePreprocess } from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +19,6 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    svelte(),
     starlight({
       title: {
         en: "Become a Hacker!",
@@ -53,6 +53,9 @@ export default defineConfig({
         // or like this.
         // autogenerate: { directory: 'reference' },
       ],
+    }),
+    svelte({
+      preprocess: vitePreprocess(),
     }),
   ],
 });
