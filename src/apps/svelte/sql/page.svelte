@@ -97,9 +97,9 @@
     <p class="mail-receiver">
       {mail.toType}: {mail.to}
     </p>
-    <p class="mail-content">
+    <div class="mail-content">
       {@html mail.content}
-    </p>
+    </div>
   </div>
 {/snippet}
 

@@ -7,7 +7,10 @@ export const Mail = v.object({
   to: v.string(),
   date: v.string(),
   subject: v.string(),
-  content: v.string(),
+  content: v.pipe(
+    v.string(),
+    v.transform((prev) => prev.replaceAll("\n", "<br />")),
+  ),
 });
 
 export type Mail = v.InferInput<typeof Mail>;
