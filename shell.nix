@@ -6,5 +6,6 @@ pkgs.mkShell {
     biome
     lefthook
     just
+    static-web-server
   ];
 }
